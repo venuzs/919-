@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>登录</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-touch-fullscreen" content="YES">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- 页面引入的CSS -->
+		<link rel="stylesheet" href="../css/global.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../css/login.css" type="text/css" media="screen" />
+
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/init.js"></script>
+		<style>
+
+		</style>
+	</head>
+
+	<body style="background-color: #fff;">
+		<header class="login-header">
+			<a class="mui_return mui-action-back" href="javascript:void(0);"></a>
+		</header>
+		<!-- /header -->
+		
+		<section class="login-logo">
+			<img src="../img/logo.png" alt="">
+		</section>
+		
+		<form class="login-form" accept-charset="utf-8">
+			<!-- <div class="login-tab">
+				<span ><label>普通登录</label></span>
+				<span class="active"><label>验证码登录</label></span>
+			</div> -->
+			<div class="ordinary-login">
+				<div class="login-form-t">
+					<!-- <i>+86</i> -->
+					<input id="username" type="text" name="username" placeholder="请输入用户名/手机号/邮箱" style="float: left;padding-left:.825rem">
+				</div>
+				<div class="login-form-t active">
+					<i>+86</i>
+					<input id="phonename" type="text" name="phonename" placeholder="请输入手机号" maxlength='11' >
+				</div>
+				<div id="m_password" class="login-form-t login-form-b ">
+					<input id="password" type="password" name="password" placeholder="请输入密码">
+					<!-- <a id='forgetPassword' href="../login/find-password.html">忘记密码?</a> -->
+				</div>
+				<div class="login-form-t login-form-b current">
+					<input id="mobileCode" maxlength="6" type="text" name="mobileCode" placeholder="请输入验证码">
+					<a id='hqyzm' href="javascript:void(0);">获取验证码</a>
+				</div>
+			</div>
+
+			<a id="loginbtn" class="login-form-sbt" href="javascript:;">登录</a>
+			<p class="login-tip" >若手机号未注册，将进入注册流程，点击确定即代表同意<span id="verifyNewText">《用户注册协议》</span></p>
+			<!-- <a id="loginrgs" class="login-form-btn login-form-sbt btn btn-link" href="../login/register.html">注册</a> -->
+		</form>
+		<div class="reqister-new-box">
+			<header class="brand-header active-header reqister-new-box-next">
+				<a class="brand-header-l" id="reqisterNewBoxNext"></a>
+				<h1>九牧商城注册协议</h1>
+			</header><!-- /header -->
+			<div id="reqisterNewBoxTxt">
+	
+			</div>
+		</div>
+		<section class="login-logo-bta">
+			<ul>
+				<!-- <li>
+					<a class="login-btna" href="http://m.ejomoo.com/wap/customer/oauth/qq?pageType=wap"><img src="../img/login-img01.png" alt=""></a>
+				</li> -->
+				<!-- <li class="m_wx">
+					<a class="login-btna" href="wx.html"><img src="../img/login-img02.png" alt=""></a>
+				</li> -->
+				<!-- <li class="m_wx">
+					<a class="login-btna" href="wx.html"><img src="../img/share_icon_wechat.png" alt=""></a>
+				</li> -->
+				<li>
+					<a class="login-btna login-bs  login-img"><img src="../img/icon_login2.png" alt=""><p>账号密码登录</p></a>
+					<a class="login-btna login-bs  login-img login-btnae"><img src="../img/icon_login1.png" alt=""><p>验证码登录</p></a>
+				</li>
+			</ul>
+		</section>
+	</body>
+
+</html>
+<!-- 页面引入的JS -->
+<script src="../js/model/login/md5/jquery.md5.js"></script>
+<script src="../js/model/login/sha1.js"></script>
+<script src="../js/des3.js"></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">document.write('<script src="../js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script src="../js/main.js"></script>
+<script src="../js/model/login/login.js"></script>
+
+<!-- 第三方登录插件 -->
+<script>
+	if(!isWeiXin()) {
+		$(".m_wx").hide();
+		$(".login-logo-bta ul").css("width", "50%");
+		$(".login-logo-bta li").css("width", "10%");
+	}
+	$("#verifyNewText").click(function(){
+		var verifyNewStr = DES3.encrypt("123456789012345678901234",'{"opeType":"getPaltCongfig"}');
+		var verifyNewUrl = window.basePath+'jsonParam='+verifyNewStr;
+		$.ajax({
+			url:verifyNewUrl,
+			type:'POST',
+			dataType:'JSON',
+			success:function(data){
+				// console.log(data)
+				if(data.return_code != 0){
+					mui.alert(data.message,"提示");
+				}else{
+					$(".reqister-new-box").fadeIn(300);
+					$("#reqisterNewBoxTxt").html(data.congfigModel.customerReg);
+				}
+			}
+		})
+	})
+	$("#reqisterNewBoxNext").click(function(){
+		$(".reqister-new-box").fadeOut(200);
+	})
+
+	//	登录切换
+	$('.login-bs').click(function() {
+		$(this).addClass('login-btnae').siblings().removeClass('login-btnae')
+		var i = $(this).index('.login-bs');
+		if(i==1){
+			$(".login-tip").css("display","block")
+		}else{
+			$(".login-tip").css("display","none")	
+		}
+		$('.login-form-b').eq(i).addClass('current').siblings('.login-form-b').removeClass('current');
+		$('.login-form-t').eq(i).addClass('active').siblings('.login-form-t').removeClass('active');
+	});
+
+	$("#hqyzm").click(function() {
+		if(!$(this).hasClass("disabled")) {
+			captchaclick();
+		}
+	});
+
+	//验证码登录
+	//获取验证码
+	var cap = "";
+	var sessionId = "";
+
+	function captchaclick() {
+		var phone = $("#phonename").val();
+		var reg = /^1\d{10}$/;
+		//var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[15678]|18[0-9]|14[579])[0-9]{8}$/;
+		if(!reg.test(phone)) {
+			mui.alert('手机号码输入有误', '提示');
+		} else {
+			var reqisterImg = DES3.encrypt("123456789012345678901234", "{'opeType':'getCodeLogin','map':{'mobile':'" + phone + "'}}");
+			var getCodeUrl = window.basePath + 'jsonParam=' + reqisterImg;
+			$.ajax({
+				url: getCodeUrl,
+				type: "POST",
+				dataType: "json",
+				success: function(data) {
+					settime($("#hqyzm"));
+					sessionId = data.sessionId;
+					sessionStorage.setItem("codesessionId", data.sessionId);
+				}
+			});
+		}
+	};
+
+	function wxAuth() {
+		var redirectUrl = encodeURI("http://m.ejomoo.com/h5/templet/login/wx.html");
+		window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e01e1488286aa5d&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+		//window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf51bfcfa23a1deee&redirect_uri=http://w.jomoo.com.cn/h5/templet/login/wx.html&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+	}
+</script>

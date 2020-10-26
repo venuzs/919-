@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 移动端手机号码/邮箱识别 -->
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!-- 微信调试 取消缓存 -->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+	<title>注册推广员</title>
+	<meta name="description" content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+	<meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+	<link rel="stylesheet" type="text/css" href="./css/global.css" />
+  <link rel="stylesheet" type="text/css" href="./css/heard.css">
+	<link rel="stylesheet" type="text/css" href="./css/register.css" />
+	<script src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+	<script src="https://m.ejomoo.com/js/main/init.js"></script>
+</head>
+<body class="exten_bg">
+  <!-- 公共头部start -->
+  <div class="top_header activity_heard">
+    <a class="top_icon fl go_back mui-action-back"></a>
+    <h3 class="top_title">成为推广员</h3>
+  </div>
+  <!-- 公共头部end -->
+  <div class="reg_box" id="app" v-cloak>
+    <div class="input_box">
+      <input class="user_name" v-model="regName" type="text" placeholder="请输入姓名">
+    </div>
+    <div class="input_box">
+      <input class="phone_box" v-model="regPhone" type="text" placeholder="请输入手机号" maxlength='11' />
+      <div class="qh_text">+86</div>
+      <span class="del_ico">
+        <img src="./img/live/close.jpg" alt="">
+      </span>
+    </div>
+    <div class="input_box">
+      <input class="code_box" v-model="regCode" type="text" placeholder="输入验证码" maxlength='6' />
+      <div class="get_code" @click="countDownPassCode">
+        <span class="my_code">{{getCodeButtonText}}</span>
+      </div>
+      <p class="reg_tip">输入手机号码有误</p>
+    </div>
+    <div class="reg_btn" @click="toJoin">确认加入</div>
+  </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript">document.write('<script src="js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script type="text/javascript">
+
+//时间戳
+  var random = new Date().getTime()
+  var activityNo = getQueryString('activityNo')//获取活动id
+  var time = 60;
+  var canGetCode = true;
+  $('.reg_tip').css('display','none')
+  // 手机号输入失去焦点
+  $(".phone_box").blur(function(){
+    var myreg=/^[1][0-9]{10}$/;
+    var val = $(this).val()
+    console.log(val)
+    if(val!=''){
+      $('.del_ico').css('display','block')
+      if(!myreg.test(val)){
+        $('.reg_tip').css('display','block')
+      }else{
+        $('.reg_tip').css('display','none')
+      }
+    }else{
+      $('.reg_tip').css('display','none')
+      $('.del_ico').css('display','none')
+    }
+  });
+  // 删除按钮
+  $('.del_ico').on('click',function(){
+    $(".phone_box").val('')
+    $('.reg_tip').css('display','none')
+  })
+</script>
+<script type="text/javascript">
+var vue = new Vue({
+  el: "#app",
+  data: {
+    regName:'',//联系人
+    regPhone:'',//联系电话
+    regCode:'',//验证码
+    timeOver:false,//防止重复点击
+    getCodeButtonText:'获取验证码',
+    sourceActivity:'',//活动id
+    codeSessionId:'',//获取验证码之后返回的SessionId
+    mainCustomerUuid:'',//分享人id
+  },
+  mounted(){
+    this.sourceActivity = this.getUrlParam('activityNo')||'';
+    this.mainCustomerUuid = localStorage.getItem('mainCustomerUuid')||'';//获取分享人id
+  },
+  methods:{
+    // 获取参数
+    getUrlParam(name) {   
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
+      var r = window.location.search.substr(1).match(reg);  //匹配目标参数   
+      if (r != null) return unescape(r[2]); return null; //返回参数值  
+    }, 
+    // 获取短信验证码
+    countDownPassCode: function (e) {
+      var that = this;
+      if(that.timeOver) return
+      that.timeOver = true
+      var mobile = that.regPhone
+      if (mobile.length == 0) {
+          mui.toast('手机号码不能为空')
+          this.timeOver = false;
+          return
+      }
+        var DES3Str = DES3.encrypt("123456789012345678901234",'{"opeType":"registrationSendMobileCode","map":{"mobile":"'+that.regPhone+'"}}');
+        //console.log('{"opeType":"liveEventRegistration","map":{"mobile":"'+that.regPhone+'","captcha":"'+that.regCode+'","realName":"'+that.regName+'"}}');
+				var url =window.basePath+'jsonParam='+DES3Str;
+				$.ajax({
+					type: 'POST',
+          url: url ,
+          async: false,
+          dataType: 'json',
+          success: function(data){
+            console.log(data)
+            if(data.return_code=='0'){
+              that.codeSessionId = data.sessionId
+              var i = 60
+              var intervalId = setInterval(function () {
+                i--
+                if (i <= 0) {
+                    that.getCodeButtonText = '获取验证码'
+                    that.timeOver = false
+                    clearInterval(intervalId)
+                } else {
+                  that.getCodeButtonText = '重新发送(' + i + ')';
+                }
+              }, 1000);
+            }else{
+              that.timeOver = false
+              mui.toast(data.message + '')
+            }
+          } 
+        })
+		},
+    // 确定加入
+    toJoin(){
+      var that = this
+      var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+      if(that.regName.trim()==''){
+        mui.toast('请输入姓名')
+        return
+      }
+      if(that.regPhone.trim()==''){
+        mui.toast('请输入手机号')
+        return
+      }
+      if(!myreg.test(that.regPhone)){
+        mui.toast('请输入正确的手机号码')
+        return
+      }
+      if(that.regCode.trim()==''){
+        mui.toast('请输入验证码')
+        return
+      }
+      var DES3Str = DES3.encrypt("123456789012345678901234",'{"opeType":"liveEventRegistration","map":{"mobile":"'+that.regPhone+'","type":"2","customerName":"'+that.regName+'","sourceActivity":"'+that.sourceActivity+'","mobileCode":"'+that.regCode+'","sessionId":"'+that.codeSessionId+'","mainCustomerUuid":"'+that.mainCustomerUuid+'"}}');
+      console.log(DES3.decrypt('123456789012345678901234',DES3Str))
+      var url =window.basePath+'jsonParam='+DES3Str;
+      console.log(url)
+      $.ajax({
+        type: 'POST',
+        url: url,
+        async: false,
+        dataType: 'json',
+        success: function(data){
+          console.log(data)
+          if(data.return_code=='0'){
+            var userId = data.customer.uuid;
+            localStorage.setItem("userId", userId);
+            localStorage.setItem("customerUuid", userId);
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("sessionId", data.sessionId);
+            window.location.href='./personalcenter.html?activityNo='+activityNo + '&v=' +random
+          }else{
+            mui.toast(data.message)
+          }
+        } 
+      }) 
+    },
+
+  }
+
+})
+</script>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>注册</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../css/global.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/login.css" type="text/css" media="screen" />
+
+
+</head>
+<body style="background: #fff;position: relative;">
+    <header class="brand-header active-header">
+        <a class="brand-header-l mui-action-back" href="login1.html"></a>
+        <h1>注册</h1>
+    </header><!-- /header -->
+    <form accept-charset="utf-8">
+        <div class="verify">
+
+            <div class="verify-v verify-v-tel">
+                <div class="verify-m-i">
+                    <img src="../img/verify-img03.png" alt="">
+                </div>
+                <input id="iphone" type="text" name="verify" placeholder="请输入手机号">
+            </div>
+            <div class="verify-v verify-v-vt">
+                <div class="verify-m-i">
+                    <img src="../img/verify-img04.png" alt="">
+                </div>
+                <input id="verifyphone"  type="text" name="verify" placeholder="请输入手机验证码">
+                <div class="verify-v-img">
+                    <a href="javascript:;">获取验证码</a>
+                </div>
+            </div>
+            <div class="verify-v verify-pass">
+                <div class="verify-m-i">
+                    <img src="../img/verify-img05.png" alt="">
+                </div>
+                <input id="password1" type="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="verify-v verify-pass-b">
+                <div class="verify-m-i">
+                    <img src="../img/verify-img06.png" alt="">
+                </div>
+                <input id="password2" type="password" name="password" placeholder="确认密码">
+            </div>
+            <div class="verify-v verify-m-top">
+                <div class="verify-m-i">
+                    <img src="../img/verify-img02.png" alt="">
+                </div>
+                <input id="inputImg" type="text" name="verify" placeholder="请输入验证码">
+                <div id="verifyimg" class="verify-v-img verify-reqister-img">
+
+                </div>
+            </div>
+            <!--<div class="verify-v verify-pass">
+                <div class="verify-m-i">
+                    <img src="../img/demo/verify-img05.png" alt="">
+                </div>
+                <input id="extensionCode" type="text" name="extensionCode" placeholder="请输入推荐人推广码" onblur="checkExtensionCode()">
+            </div>-->
+            <div class="verify-new-jia">
+                <a id="verifyNew" class="fl verify-new-jia-a verify-new-bg01" href="javascript:;"></a>
+                <p class="fl verify-new-jia-p">我已阅读并同意<a id="verifyNewText" href="javascript:;" >《九牧商城注册协议》</a></p>
+            </div>
+            <a class="btn btn-custom verify-btn" href="javascript:;">立即注册</a>
+            <a class="btn btn-link verify-go" href="login1.html">去登录</a>
+        </div>
+    </form>
+    <div class="reqister-new-box">
+        <header class="brand-header active-header reqister-new-box-next">
+            <a class="brand-header-l" id="reqisterNewBoxNext"></a>
+            <h1>九牧商城注册协议</h1>
+        </header><!-- /header -->
+        <div id="reqisterNewBoxTxt">
+
+        </div>
+    </div>
+
+<script src="../js/init.js"></script>
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/model/login/register.js"></script>
+<script src="../js/des3.js"></script>
+<script type="text/javascript">document.write('<script src="../js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script src="../js/main.js"></script>
+<script>
+    //mui初始化
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+        $(function(){
+
+        })
+</script>
+
+</body>
+</html>

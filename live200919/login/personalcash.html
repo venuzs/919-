@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- 移动端手机号码/邮箱识别 -->
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- 微信调试 取消缓存 -->
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>个人中心</title>
+    <meta name="description" content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+    <meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+    <link rel="stylesheet" type="text/css" href="./css/global.css" />
+    <link rel="stylesheet" type="text/css" href="./css/live.css" />
+    <link rel="stylesheet" type="text/css" href="./css/heard.css">
+    <link rel="stylesheet" type="text/css" href="./css/personal.css" />
+    <script src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+    <script src="https://m.ejomoo.com/js/main/init.js"></script>
+    <style>
+        [v-cloak]{display: none;}
+    </style>
+</head>
+<body style="background: #F3F3F3;">
+
+<div class="contentbox" id="app" v-cloak>
+    <!-- 公共头部start -->
+    <div class="top_header activity_heard">
+        <a class="top_icon fl go_back" @click="toindex"></a>
+        <h3 class="top_title">个人中心</h3>
+    </div>
+    <!-- 公共头部end -->
+    <div class="" v-if="islogin">
+        <div class="jm-spacing"></div>
+        <div class="jm-personal">
+            <div class="jm-personal-info">
+                <div class="jm-image fl" @click="toInfo">
+                    <img :src="data.imgUrl?data.imgUrl:'./img/g2_dmine.png'" alt="">
+                </div>
+                <div class="jm-info fl">
+                    <h2>{{data.customerName}}</h2>
+                    <p>{{data.mobile}}</p>
+                </div>
+            </div>
+
+            <div class="jm-count">
+                <div class="jm-countent" @click="toBaomi">
+                    <span>{{data.enrollCount || 0}}</span>
+                    <p >已报名数</p>
+                </div>
+                <div class="jm-countent"  @click="toShare">
+                    <span>{{data.shareCount || 0}}</span>
+                    <p >已分享数</p>
+                </div>
+                <div class="jm-countent" @click="toView">
+                    <span>{{data.browseCount || 0}}</span>
+                    <p>已浏览数</p>
+                </div>
+            </div>
+        </div>
+        <div class="jm-spacing"></div>
+        <div class="jm-conpon" @click="toConpon">
+            <span class="fl">我的优惠券 <em>{{data.couponCount || 0}}</em></span>
+            <!-- <label class="fr"></label> -->
+        </div>
+        <div class="jm-spacing"></div>
+        <ul class="jm-order">
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/pt/list.html')">
+                <img src="./img/icon-assemble.png" alt="">
+                <p>拼团订单</p>
+            </li>
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/order/order-mess.html')">
+                <img src="./img/icon-presale.png" alt="">
+                <p>预售订单</p>
+            </li>
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/customer_service/index.html')">
+                <img src="./img/icon-postsale.png" alt="">
+                <p>我的售后</p>
+            </li>
+        </ul>
+        <div class="jm-spacing"></div>
+        <div class="jm-profit">
+            <p class="jm-tic">我的收益</p>
+            <div class="jm-reward" >
+                <p class="jm-price fl">
+                    <img src="./img/live/4.png" alt="">
+                    奖励金<span>{{data.money || 0.00}}</span>
+                </p>
+                <a class="fr" v-on:click="transferPay">提现</a>
+            </div>
+            <div class="jm-detail" @click="toDetails">
+                奖励金明细
+            </div>
+        </div>
+        <!--弹框-->
+        <div class="jm-mask" v-on:click="iselasticframe = false" v-if="iselasticframe"></div>
+        <div class="jm-elasticframe" v-if="iselasticframe">
+            <h2>提现到微信钱包 <b v-on:click="iselasticframe = false"></b></h2>
+            <p class="jm-pay">提现金额</p>
+            <div class="jm-pay-price">
+                <span>¥</span>
+                <p  style="width: 80%;">{{cashwithdrawal}}</p>
+            </div>
+            <p class="jm-all">可提现¥{{cashwithdrawal}} </p>
+            <p class="jm-p2" v-if="cashwithdrawal < 1" >提现金额必须大于等于1元</p>
+            <p class="jm-payall" v-if="cashwithdrawal >= 1" v-on:click="transferAll">确认提现</p>
+            <p class="jm-payall disabled" v-else>确认提现</p>
+        </div>
+        <!--弹框 end-->
+    </div>
+    <!--未登陆-->
+    <div class="" v-else>
+        <div class="jm-spacing"></div>
+        <div class="jm-personal">
+            <div class="jm-personal-info jm-ispersonalinfo" @click="binlogin">
+                <div class="jm-image fl">
+                    <img src="./img/g2_dmine.png" alt="">
+                </div>
+                <div class="jm-info fl">
+                    <h2>去登录</h2>
+                </div>
+            </div>
+
+            <div class="jm-count">
+                <div class="jm-countent">
+                    <span>{{data.enrollCount || 0}}</span>
+                    <p >已报名数</p>
+                </div>
+                <div class="jm-countent">
+                    <span>{{data.shareCount || 0}}</span>
+                    <p >已分享数</p>
+                </div>
+                <div class="jm-countent">
+                    <span>{{data.browseCount || 0}}</span>
+                    <p>已浏览数</p>
+                </div>
+            </div>
+        </div>
+        <div class="jm-spacing"></div>
+        <div class="jm-conpon">
+            <span class="fl">我的优惠券 <em ></em></span>
+            <!-- <label class="fr"></label> -->
+        </div>
+        <div class="jm-spacing"></div>
+        <ul class="jm-order">
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/pt/list.html')">
+                <img src="./img/icon-assemble.png" alt="">
+                <p>拼团订单</p>
+            </li>
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/order/order-mess.html')">
+                <img src="./img/icon-presale.png" alt="">
+                <p>预售订单</p>
+            </li>
+            <li @click="binjump('http://m.ejomoo.com/h5/templet/customer_service/index.html')">
+                <img src="./img/icon-postsale.png" alt="">
+                <p>我的售后</p>
+            </li>
+        </ul>
+        <div class="jm-spacing"></div>
+        <div class="jm-profit">
+            <p class="jm-tic">我的收益</p>
+            <div class="jm-reward" >
+                <p class="jm-price fl">
+                    <img src="./img/live/4.png" alt="">
+                    奖励金<span>0.00</span>
+                </p>
+                <a class="fr">提现</a>
+            </div>
+            <div class="jm-detail" >
+                奖励金明细
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部导航-->
+<nav class="nav">
+    <div class="footer_nav">
+        <ol>
+            <li class="nav_li1 " id="home">
+                <a href="javascript:;">
+                    <s></s>
+                    <p>首页</p >
+                </a>
+            </li>
+            <li class="nav_li2" id="classify">
+                <a href="javascript:;">
+                    <s></s>
+                    <p>成为推广员</p >
+                </a>
+            </li>
+            <li class="nav_li3 active" id="me">
+                <a href="#">
+                    <s></s>
+                    <p>个人中心</p >
+                </a>
+            </li>
+        </ol>
+    </div>
+</nav>
+<!--底部导航 end-->
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript">document.write('<script src="js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script>
+
+    //时间戳
+    var random = new Date().getTime();
+    var activityNo = getQueryString('activityNo') || ''//活动id
+    var customerUuid = localStorage.getItem("userId");//用户的uuid
+    var bind_openid = sessionStorage.getItem("bind_openid");
+    if(!isEmpty(customerUuid)){
+        if(sessionStorage.getItem('noBandWX') != '1' && isWeiXin()) {
+            quiteLogin();
+        }
+    }else{
+        sessionStorage.removeItem("noBandWX");
+    }
+
+    //点击底部导航-首页按钮页面跳转，在原基础上添加小程序跳转判断
+    $('#home').click(function(){
+        window.location.href='./livepresale.html?activityNo='+ activityNo +'&v=' + random
+    })
+    //点击底部导航-分类按钮页面跳转，在原基础上添加小程序跳转判断
+    $('#classify').click(function(){
+        var customerUuid = localStorage.getItem("userId");//用户的uuid
+        var token = localStorage.getItem("token");
+        var sessionId = localStorage.getItem("sessionId");
+        if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+            window.location.href='./share.html?activityNo='+ activityNo +'&v=' + random
+        }else{
+            window.location.href='./extension.html?activityNo='+ activityNo +'&v=' + random
+        }
+    })
+    //点击底部导航-我的按钮页面跳转，在原基础上添加小程序跳转判断
+    $('#me').click(function(){
+        window.location.href='./personalcenter.html?activityNo='+ activityNo +'&v=' + random
+    })
+    var vue = new Vue({
+        el: "#app",
+        data: {
+            data:'',
+            islogin:true,
+            iselasticframe:false,
+            money:"",
+            cashwithdrawal:0,
+        },
+        mounted() {
+            this.init();
+        },
+        methods:{
+            init(){
+                var that = this;
+                var userId = localStorage.getItem("userId");//用户的uuid
+                var token = localStorage.getItem("token");
+                var sessionId = localStorage.getItem("sessionId");
+                if (!isEmpty(userId) && !isEmpty(token) && !isEmpty(sessionId)) {
+                    var url = DES3.encrypt("123456789012345678901234", '{"opeType":"customerCenterRewardMoney","map":{"sessionId":"' + sessionId + '","customerUuid":"' + userId + '","token":"' + token + '","activityUuid":"' + activityNo + '"}}');
+                    console.log(DES3.decrypt('123456789012345678901234',url))
+                    url = window.basePath + 'jsonParam=' + url;
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            var returncode = data.return_code;
+                            if(returncode != '0') {
+                                if(returncode == '49'|| returncode =='50'|| returncode =='51'){
+                                    that.islogin = false;
+                                }else{
+                                    mui.alert(data.message, '提示');
+                                }
+                            }else{
+                                that.islogin = true;
+                                that.data = data.data;
+                                that.cashwithdrawal = data.data.money
+                            }
+                        },
+                        error: function(data) {
+                            mui.alert('系统错误', '提示');
+                        }
+                    })
+                }else{
+                    that.islogin = false;
+                    // var comeAddress = window.location.href;
+                    // localStorage.setItem("loginJump", comeAddress);
+                    // window.location.href = "./login/login1.html"
+                }
+            },
+            //跳转详情页面
+            binjump(url){
+                var customerUuid = localStorage.getItem("userId");//用户的uuid
+                var token = localStorage.getItem("token");
+                var sessionId = localStorage.getItem("sessionId");
+                if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+                    window.location.href = url
+                }else{
+                    var comeAddress = window.location.href;
+                    localStorage.setItem("loginJump", comeAddress);
+                    window.location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random
+                }
+               
+            },
+            toindex(){
+                window.location.href = './livepresale.html?activityNo='+activityNo +'&v=' + random
+            },
+            // 跳转到优惠券页面
+            toConpon(){
+                var customerUuid = localStorage.getItem("userId");//用户的uuid
+                var token = localStorage.getItem("token");
+                var sessionId = localStorage.getItem("sessionId");
+                if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+                  window.location.href = './mycoupon.html?activityNo='+activityNo +'&v=' + random
+                }else{
+                    var comeAddress = window.location.href;
+                    localStorage.setItem("loginJump", comeAddress);
+                    window.location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random
+                }
+            },
+            // 跳转到奖励金说明页面
+            showRuler(){
+                window.location.href = './reward.html?activityNo='+activityNo +'&v=' + random
+            },
+            // 跳转到个人资料页面
+            toInfo(){
+                window.location.href = './personalinfo.html?activityNo='+activityNo +'&v=' + random
+            },
+            //跳转到登陆
+            binlogin(){
+                var comeAddress = window.location.href;
+                localStorage.setItem("loginJump", comeAddress);
+                window.location.href = './login/login1.html?activityNo='+activityNo +'&v=' + random
+            },
+            // 跳转到奖励金明细页面
+            toDetails(){
+                window.location.href = './rewarddetails.html?activityNo='+activityNo +'&v=' + random
+            },
+            toBaomi(){
+                window.location.href = './registrationstatistics.html?activityNo='+activityNo +'&v=' + random
+            },
+            toShare(){
+                window.location.href = './sharingstatistics.html?activityNo='+activityNo +'&v=' + random
+            },
+            toView(){
+                window.location.href = './browsestatistics.html?activityNo='+activityNo +'&v=' + random
+            },
+            transferPay(){
+                this.iselasticframe = true;
+            },
+            transferAll(){
+                var that = this;
+                if(!isWeiXin()){
+                    mui.toast('请前往微信提现')
+                    return
+                }
+                var userId = localStorage.getItem("userId");//用户的uuid
+                var token = localStorage.getItem("token");
+                var sessionId = localStorage.getItem("sessionId");
+                // var activityUuid = "";
+                var openId = sessionStorage.getItem("bind_openid");
+                var url = DES3.encrypt("123456789012345678901234", '{"opeType":"transferPay","map":{"sessionId":"' + sessionId + '","customerUuid":"' + userId + '","token":"' + token + '","activityUuid":"' + activityNo + '","openId":"' + openId+'"}}');
+                console.log(DES3.decrypt('123456789012345678901234',url))
+                url = window.basePath + 'jsonParam=' + url;
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                        var returncode = data.return_code;
+                        if(returncode == '0') {
+                            mui.toast('提现成功')
+                            that.iselasticframe = false;
+                            that.init()
+                        }else{
+                            mui.alert(data.message)
+                        }
+                    },
+                    error: function(data) {
+                        mui.alert('系统错误', '提示');
+                    }
+                })
+
+            },
+        },
+    })
+</script>
+

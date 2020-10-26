@@ -1,0 +1,555 @@
+@charset "UTF-8";
+/*
+* @Author: Marte
+* @Date:   2017-06-02 09:54:22
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-07-24 18:51:51
+*/
+/*
+*
+* 登陆页面
+*
+*/
+.login-header {
+    width: 100%;
+    height: 2.2rem;
+}
+.login-header a {
+    width: 20%;
+    display: block;
+    height: 2.2rem;
+    float: left;
+    background: url(../img/top_back.png) center no-repeat;
+    background-size: auto 50%;
+}
+.login-logo {
+    width: 5.675rem;
+    height: 2.675rem;
+    overflow: hidden;
+    margin: 2.5rem auto;
+}
+.login-logo a{
+    display: block
+}
+.login-logo img {
+    width: 100%;
+    height: 100%;
+    /* margin:  auto ; */
+    display: block;
+}
+.login-form .login-form-t {
+    width: 80%;
+    height:2.2rem;
+    margin: 0 auto .8rem;
+    border-radius: 1.1rem;
+    /* border-bottom: 1px solid #30415f; */
+    background: #F6F6F6;
+    display: none;
+}
+.login-form .login-form-t i {
+    display: block;
+    width: 20%;
+    height:2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    color: #333;
+    float: left;
+    /* background: url(../img/login-bg02.png) center no-repeat; */
+    font-style: normal;
+}
+.login-form .login-form-t input {
+    width: 78%;
+    height: .9rem;
+    float: right;
+    border: none;
+    background: none;
+    padding: .7rem .2rem .7rem 0;
+}
+.login-form .login-form-b {
+    border: none;
+}
+.login-form .login-form-b i {
+    background: url(../img/login-bg03.png) center no-repeat;
+    -webkit-background-size: 50% auto;
+    background-size: 50% auto;
+}
+.login-form .login-form-b input {
+    width: 45%;
+    float: left;
+    padding-left: .825rem;
+}
+.login-form .login-form-b a {
+    display: block;
+    height: 1.25rem;
+    width: 30%;
+    float: right;
+    /* border-left: 1px solid #ccc; */
+    margin-top: .6rem;
+    padding-left: .3rem;
+    color: #F02C2C;
+    font-size: .55rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+.login-form-sbt {
+    width: 80%;
+    height: 2.2rem;
+    margin: 0 auto;
+    display: block;
+    margin-top: .8rem;
+    line-height: 2.2rem;
+    cursor: pointer;
+    font-size: .8rem;
+    background: #F02C2C;
+    color: #fff;
+    border-radius: 1.1rem;
+    text-align: center;
+}
+.login-tip{
+    width: 80%;
+    margin: .8rem auto 0;
+    color: #666666;
+}
+.login-form-btn {
+    border: 1px solid #002b5c;
+    color: #002b5c;
+    background: rgba(255,255,255,.3);
+    line-height: 1.8rem;
+}
+.login-logo-bta {
+    height: 3.325rem;
+    width: 100%;
+    display: block;
+    margin-top: 1.8rem;
+}
+.login-logo-bta ul {
+    width: 12.5rem;
+    height: 3.325rem;
+    margin: 0 auto;
+    display: box;              /* OLD - Android 4.4- */
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.login-logo-bta ul li {
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.login-logo-bta ul li .login-btna {
+    /* width: 2.5rem; */
+    height: 3.325rem;
+    display: block;
+    background: #fff;
+    /* border-radius: 50%; */
+    margin: 0 auto;
+    overflow: hidden;
+}
+.login-logo-bta ul li .login-btnae{
+    display: none;
+}
+.login-logo-bta ul li .login-btna img {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.login-logo-bta ul li .login-btna.login-img img {
+    width: 2.125rem;
+    height: 2.125rem;
+   
+}
+.login-logo-bta ul li .login-btna.login-img p{
+    text-align: center;
+    margin-top: .375rem;
+    color: #999;
+}
+.login-form-t.active{
+    display: block;
+}
+
+/*
+*
+* 注册页面
+*
+*/
+.verify {
+    padding: 0 10%;
+}
+.verify-v {
+    height: 1.82rem;
+    border-bottom: 1px solid #ddd;
+    padding: .425rem 0;
+    position: relative;
+
+}
+.verify-v .verify-m-i {
+    height: 1.82rem;
+    float: left;
+    width: 15%;
+    margin-top: .4rem;
+}
+.verify-v .verify-m-i {
+    height: 1rem;
+    width: 1rem;
+}
+.verify-v input {
+    border: none;
+    height: 1.02rem;
+    padding: .4rem;
+    width: 45%;
+    float: left;
+}
+.verify-v .verify-v-img {
+    width: 38%;
+    height: 1.42rem;
+    margin: .2rem 0;
+    border-left: 1px solid #ddd;
+    float: left;
+}
+.verify-v .verify-v-img img {
+    width: 100%;
+    height: 1.42rem;
+}
+.verify-m-top {
+    margin-top: .5rem;
+}
+.verify .verify-v-tel input {
+    width: 78%;
+}
+.verify .verify-v-vt .verify-v-img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 1.42rem;
+    text-align: center;
+    font-size: .65rem;
+    color: #002b5c;
+    font-weight: 600;
+}
+
+.verify-btn {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 1rem;
+    font-size: .7rem;
+    display: block;
+    line-height: 1.9rem;;
+}
+.verify-go {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: .5rem;
+    font-size: .7rem;
+    color: #002b5c;
+    font-weight: 700;
+}
+.verify-new-jia {
+    height: 1.42rem;
+}
+.verify-new-jia .verify-new-jia-a {
+    display: block;
+    width: .6rem;
+    height: .6rem;
+    border: 1px solid #0b285b;
+    margin: .8rem .38rem 0 .22rem;
+}
+.verify-new-jia .verify-new-jia-p {
+    font-size: .6rem;
+    color: #666666;
+    line-height: 2.42rem;
+}
+.verify-new-jia .verify-new-jia-p a {
+    color: #0b285b;
+}
+.verify-new-jia .verify-new-bg01 {
+    background: url(../img/verify-new-bg01.png) center no-repeat;
+    background-size: .6rem;
+}
+/*
+*
+* 注册成功页面
+*
+*/
+.verify-win {
+    height: 4rem;
+    width: 100%;
+    margin-top: 1.9rem;
+}
+.verify-win img {
+    height: 4rem;
+    width: 4rem;
+    display: block;
+    margin: 0 auto;
+}
+.verify-win-txt {
+    padding: 0 2.25rem;
+}
+.verify-win-txt p {
+    font-size: .65rem;
+    text-align: center;
+    color: #666;
+    line-height: 1.25rem;
+}
+.verify-win-txt .verify-win-gx {
+    font-size: .85rem;
+    color: #222;
+    margin: 1rem 0 .6rem 0;
+}
+.verify-win-txt .verify-go {
+    background: #fff;
+    border: 1px solid #ddd;
+    line-height: 1.9rem;
+}
+
+.verify-win-txt .verify-ten {
+    color: #999;
+    line-height: 1.5rem;
+}
+.verify-v p {
+    margin-top: .45rem;
+    margin-left: .3rem;
+    font-weight: 600;
+    width: 68%;
+    height: 1rem;
+    overflow: hidden;
+}
+.verify-v .verify-v-tel-t {
+    width: 88%;
+}
+.verify-m-right {
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    line-height: 1.82rem;
+    font-size: .8rem;
+    background: url(../img/verify-bg03.png) right center no-repeat;
+    background-size: .35rem .7rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.verify-m-bg05 {
+    background: url(../img/verify-img07.png) center no-repeat;
+    background-size: 1rem;
+}
+.verify-m-bg06 {
+    background: url(../img/verify-img03.png) center no-repeat;
+    background-size: 1rem;
+}
+.verify-v .verify-bg-imla {
+    background: url(../img/verify-bg05.png) center no-repeat;
+    background-size: 1rem;
+}
+.verify-v .verify-bg-imlb {
+    background: url(../img/verify-bg06.png) center no-repeat;
+    background-size: 1rem;
+}
+/* 找回密码弹出框 */
+.verify-v-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+    display: none;
+}
+.verify-b-center {
+    width: 13rem;
+    height: 6.75rem;
+    background: #fff;
+    margin: 6rem auto;
+}
+.verify-b-center li {
+    height: 2.23rem;
+    margin: 0 .6rem;
+}
+.verify-b-center .verify-b-center-c {
+    border-bottom: 1px solid #eee;
+    margin: 0;
+    text-align: center;
+    line-height: 2.23rem;
+    font-size: .85rem;
+    font-weight: 600;
+}
+.verify-b-center-b {
+    border-bottom: 1px solid #eee;
+}
+.verify-b-bottom {
+    padding: 0 .5rem;
+    text-align: left;
+    line-height: 2.23rem;
+    font-size: .75rem;
+    font-weight: 600;
+    position: relative;
+}
+.verify-checkbox {
+    margin-left: .5rem;
+    height: 2rem;
+    width: 2rem;
+
+}
+.verify-checkbox input {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-top: .4rem;
+    margin-left: .3rem;
+    opacity: 0;
+}
+.verify-checkbox-bgimg {
+    background: url(../img/verify-bg-ok.png) center no-repeat;
+    background-size: 1.05rem .8rem;
+}
+.verify-checkbox a {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+/*
+*
+* 九牧商城注册协议页面
+*
+*/
+.register-body {
+    padding: 1rem;
+    font-size: .7rem;
+    color: #666;
+    padding-bottom: 3.5rem;
+    background: #f6f6f6;
+}
+.register-body p {
+    line-height: 1.2rem;
+}
+.register-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.register-footer a {
+    display: block;
+    height: 2.5rem;
+    background: #0b285b;
+    color: #fff;
+    font-size: .75rem;
+    text-align: center;
+    line-height: 2.5rem;
+}
+/*
+*wap注册页面 九牧商城注册页面的弹框
+ */
+.reqister-new-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    display: none;
+}
+#reqisterNewBoxTxt {
+    padding: 2.8rem .6rem .6rem;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.reqister-new-box-next {
+    position: fixed;
+    background: #fff;
+    z-index: 1000;
+}
+
+
+.verify-win-txt .verify-go{
+	font-weight: normal;
+    color: #fff;
+    background-color: #0b285b;
+    border-color: #0b285b;
+}
+.verify-win-txt .verify-btn{
+	background: #fff;
+    border: 1px solid #ddd;
+    color: #002b5c;
+}
+.verify-win-txt .m_village{
+	border: 1px dashed #c0b5b5;
+	position: relative;
+	z-index: 99999;
+}
+	
+
+.m-guidebox{
+	
+	height: 4rem;
+	position: relative;
+	z-index: 99999;
+	background: url(../img/m-guidebox.png) center no-repeat;
+	background-size:auto 100%;
+	margin:0 auto;
+}
+.m-guidebox .p1{
+	padding-top: 1.5rem;
+	color:#fff;
+	line-height: 1rem;
+	
+}
+.m-guidebox p{
+	color: #fff;
+	text-align: center;
+	font-size: .6rem;
+	line-height: .8rem;
+}
+.verify-win-txt{
+	text-align: center;
+}
+.verify-win-txt #btnGo{
+	padding-top: .3rem;
+	display: block;
+	color: #0b285b;
+	 text-decoration: underline;
+    font-size: .7rem;
+}
+.verify-win-txt .m-verifyten{
+	margin-top: 1rem;
+	color :#fe732b;
+}
+.mui-backdrop.m_backdropbox{
+	background-color: rgba(0, 0, 0, .6);
+}
+
+.login-tab{
+		overflow:hidden;
+		zoom:1;
+		margin:1.5rem 0;	
+	}
+	.login-tab span{
+		float: left;
+		width: 50%;
+		font-size: .8rem;
+		text-align: center;
+	}
+	.login-tab span label{
+		display: inline-block;
+		height: 2rem;
+		line-height: 2rem;
+	}
+	.login-tab span.active label{
+		border-bottom: 1px solid #0b285b;
+		color: #0b285b;
+	}
+	.login-form-b{
+		display: none;
+	}
+	.login-form-b.current {
+		display: block;
+	}

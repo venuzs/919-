@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>绑定手机</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../css/global.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/member.css" type="text/css" media="screen" />
+
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/init.js"></script>
+</head>
+<body style="background: #fff;">
+    <header class="brand-header active-header" style="background: #fff;">
+        <a class="brand-header-l" href="login1.html"></a>
+        <h1>绑定账号</h1>
+    </header><!-- /header -->
+      <input id="bindType" type="hidden">
+      <input id="bindOpenId" type="hidden">
+      <input id="bindUnionid" type="hidden">
+    <ul class="clearfix brand-tab-f">
+        <li class="fl brand-tab-l brand-tab-color">已有账号</li>
+        <li class="fl">新建账号</li>
+    </ul>
+
+    <div class="brand-tab-obox">
+        <form class="">
+        <section class="tel-import tel-import-new"  id="change-nickname">
+            <input id="username" type="text" placeholder="用户名/手机号">
+        </section>
+        <section class="tel-import tel-i-new2">
+            <input id="password"  type="password" placeholder="密码">
+        </section>
+        </form>
+        <section class="tel-alter">
+            <input id="bind" style="width: 100%;" class="tel-alter-click btn btn-custom" value="绑定">
+        </section>
+    </div>
+
+    <div class="brand-tab-obox" style="display: none;">
+        <form class="">
+            <section class="tel-import tel-import-new"  id="change-nickname">
+                <input id="mobile" type="text" placeholder="手机">
+            </section>
+             <section class="tel-import tel-i-new1">
+                <input id="yzmCode"  type="text" placeholder="短信验证码">
+                  <p id="getyzm" class="tel-import-btn">获取验证码</p>
+            </section>
+            <section class="tel-import tel-i-new2">
+                <input id="pwd"  type="password" placeholder="密码，6-20位数字字母组成">
+            </section>
+             <section class="tel-import tel-i-new3">
+                <input id="repassword"  type="password" placeholder="确认密码">
+            </section>
+            </form>
+            <section class="tel-alter">
+                <input id="createbind" style="width: 100%;" class="tel-alter-click btn btn-custom" value="新建账号并绑定">
+            </section>
+    </div>
+    <script src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/model/login/bind.js"></script>
+
+<script>
+$(function(){
+    $(".brand-tab-f li").click(function(){
+        $(this).addClass('brand-tab-color').siblings().removeClass('brand-tab-color');
+        $(".brand-tab-obox").hide().eq($(".brand-tab-f li").index(this)).show();
+    })
+})
+</script>
+</body>
+</html>

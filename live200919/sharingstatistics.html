@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 移动端手机号码/邮箱识别 -->
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!-- 微信调试 取消缓存 -->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<title>已分享统计</title>
+	<meta name="description" content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+	<meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+	<link rel="stylesheet" type="text/css" href="./css/global.css" />
+  <link rel="stylesheet" type="text/css" href="./css/heard.css">
+	<link rel="stylesheet" type="text/css" href="./css/register.css" />
+  <script src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+  <script src="js/template.js"></script>
+  <script src="https://m.ejomoo.com/js/main/init.js"></script>
+
+  <style>
+    [v-cloak]{display: none;}
+  </style>
+</head>
+<body style="background: #fff;">
+
+  <!-- 公共头部start -->
+  <div class="top_header activity_heard">
+    <a class="top_icon fl go_back mui-action-back"></a>
+    <h3 class="top_title">已分享统计</h3>
+  </div>
+  <!-- 公共头部end -->
+  <script type="text/html" id="infoDetailTmp">
+      {{if list != null && list.length >0}}
+      {{each list as m}}
+        <div class="jm-itme">
+          <div class="jm-img"><img class="jm-sj" src="{{m.customerModel.headImg || './img/g2_dmine.png'}}"  alt=""></div>
+          <div class="jm-name jm-name1">
+            <p class="p1">{{m.customerModel.customerName}}</p>
+            <p class="p2">{{m.createTime}}</p>
+          </div>
+          <!-- <div class="jm-num">
+            x32
+          </div> -->
+          <!-- <div class="jm-telephone" data-telephone="{{m.customerModel.mobile}}">
+            <img class="jm-sj" src="./img/live/3.png"  alt="">
+          </div> -->
+        </div>
+      {{/each}}
+    {{/if}}
+    {{if list== null || list.length <=0}}
+				<div class="no_blank">
+			       <div class="m_img">
+                <img src="http://m.ejomoo.com/img/zwsj.png" alt="">
+             </div>
+             <p>暂无数据</p>
+			  </div>
+		{{/if}}
+  </script>
+  <script type="text/html" id="browsenum">
+    <span class="fl">分享明细</span>
+     
+  </script>
+    <div class="contentbox" id="app" v-cloak>
+      <div class="jm-browsenum">
+        
+      </div>
+      <div class="jm-spacing"></div>
+      <div class="jm-browse">
+        
+      </div>
+      <!-- 没有更多提示 -->
+      <section class="y_nomore" style="display:none"><header>没有更多了</header></section>
+
+      <div class="jm-mask" style="display:none"></div>
+      <div class="jm-elasticframe" style="display:none">
+          <p><a id="elasticfram" href="tel:168-1686-16888">拨打</a></p>
+          <p @click="copy" id="copytext"><span>{{telephone}}</span></p>
+      </div><!--弹框 end-->
+    </div>
+  
+
+</body>
+</html>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript">document.write('<script src="js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script>
+  //时间戳
+  var random = new Date().getTime()
+  var activityNo = getQueryString('activityNo');
+ var srollFlg = true;
+  var nowPage = 1;
+  var pageShow = 10;
+  var totalPage = 1;
+  //var activityNo ="0001";
+  init(nowPage);
+  var vue = new Vue({
+		el: "#app",
+    data: {
+      iselasticframe:false,
+      list:[],
+      telephone:""
+    },
+    mounted() {
+    },
+    methods:{
+      call(){
+        this.iselasticframe = true;
+      },
+      copy(){
+        this.copyTxt("copytext");
+      },
+      copyTxt(obj){
+        var box = document.getElementById(obj);
+        var selection = window.getSelection();
+        var range = document.createRange();//创建一个选区
+        range.selectNodeContents(box);
+        selection.removeAllRanges();
+        selection.addRange(range);//把当前div添加到选区,此时div会变蓝（选中状态）
+        document.execCommand("copy");//这一步之后，div的innerHTML就放到剪贴板里面了，就可以粘贴了，不止可以在浏览器粘贴，在任何地方都可以。此方法的参数有好多种情况，可问度娘
+        selection.removeAllRanges();//取消div的选中状态，免得看着那个地方蓝蓝的不好看
+        mui.toast(
+         '复制成功'
+        );
+        this.iselasticframe = false;
+      }
+    }
+  })
+  function init(nowPageStr){
+    let that = this;
+    // var userId = "82ac913e4b6b4d239f46ab5f57d21fd6";
+    // var token = "5e48838731c6b9dfa03533bbddffe5ca";
+    // var sessionId = "0f74c3b5-def2-4437-a6b8-92182f02d11e";
+    var userId = localStorage.getItem("userId") || '';//用户的uuid
+    var token = localStorage.getItem("token") || '';
+    var sessionId = localStorage.getItem("sessionId") || '';	
+    if (!isEmpty(userId) && !isEmpty(token) && !isEmpty(sessionId)) {
+      // 统计类型: 1——报名数；2——分享数；3——浏览数
+      var url = DES3.encrypt("123456789012345678901234", '{"opeType":"getLiveActivitystatisticsDetail","map":{"activityNo":"' + activityNo + '","sessionId":"' + sessionId + '","customerUuid":"' + userId + '","nowPage":"' + nowPageStr + '","type":"2","token":"' + token + '","pageShow":"' + pageShow + '"}}');
+      console.log('{"opeType":"getLiveActivitystatisticsDetail","map":{"activityNo":"' + activityNo + '","sessionId":"' + sessionId + '","customerUuid":"' + userId + '","nowPage":"' + nowPageStr + '","type":"2","token":"' + token + '","pageShow":"' + pageShow + '"}}')
+      console.log(DES3.decrypt('123456789012345678901234',url))
+      url = window.basePath + 'jsonParam=' + url;
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+          console.log(data);
+          var returncode = data.return_code;
+          if(returncode == '0') {
+            totalPage = data.vm.totalPage;
+            var html = template('browsenum', data);
+            $(".jm-browsenum").html(html);
+            var html = template('infoDetailTmp', data);
+            $(".jm-browse").append(html);
+          }else{
+            if(returncode == '49'|| returncode=='50'|| returncode =='51'){
+              var comeAddress = window.location.href;
+              localStorage.setItem("loginJump", comeAddress);
+              window.location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random;
+            }else{
+              mui.alert(data.message, '提示');
+            }
+          }
+        },
+        error: function(data) {
+          mui.alert('系统错误', '提示');
+        }
+      })
+    }else{
+      var comeAddress = window.location.href;
+      localStorage.setItem("loginJump", comeAddress);
+      window.location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random;
+    }
+  }
+  $(".jm-browse").on('click','.jm-telephone',function(event) {
+    var telephone = $(this).attr("data-telephone");
+    vue.telephone = telephone
+    $("#elasticfram").attr("href","tel:"+telephone)
+    $(".jm-mask,.jm-elasticframe").show()
+  })
+
+  $('.jm-mask').click(function(){
+    $(".jm-mask,.jm-elasticframe").hide()
+  })
+  
+
+  $(window).scroll(function(){
+    if($(window).scrollTop() >= $(document).height() - $(window).height() - 80 && srollFlg){
+        srollFlg = false;
+        nowPage = nowPage + 1;
+        if(nowPage > totalPage){
+          $(".y_nomore").show();
+        }else{
+          init(nowPage);
+          srollFlg = true;
+        }
+    }
+  })
+</script>
