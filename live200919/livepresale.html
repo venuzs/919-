@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 移动端手机号码/邮箱识别 -->
+  <meta content="telephone=no,email=no" name="format-detection">
+  <!-- 微信调试 取消缓存 -->
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>919九牧购物狂欢节</title>
+  <meta name="description"
+        content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号"/>
+  <meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+  <link rel="stylesheet" type="text/css" href="./css/global.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/heard.css">
+  <link rel="stylesheet" type="text/css" href="./css/live.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/mui.picker.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/mui.poppicker.css"/>
+  <script src="./js/jquery-1.11.1.min.js"></script>
+    <link href="./lib/swiper/css/swiper-3.4.2.min.css" rel="stylesheet">
+  <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+  <script src="./js/init.js"></script>
+    <script>
+        (function(a,b,c,d,e){
+            var s= b.createElement(c);s.async=1;s.src='//t.agrantsem.com/tg.js?ang_tj=true&c='+d+'&t='+e;
+            var r= b.getElementsByTagName(c)[0];r.parentNode.insertBefore(s,r);
+        })(window,document,'script','AG_334765_XTPP','1');
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b17404c4f51123e35423ab30fe052a7e";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'PingFangSC', 'helvetica neue', 'hiragino sans gb', 'arial', 'microsoft yahei ui', 'microsoft yahei', 'simsun', 'sans-serif';
+    }
+
+    html, body {
+      background-color: #fff;
+      overflow-x: hidden
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <script>
+    var getTimestamp = new Date().getTime();
+  </script>
+</head>
+<body>
+
+<div class="contentbox" id="app" v-cloak>
+  <!-- 公共头部start -->
+  <!--<div class="top_header activity_heard">-->
+  <!--<h3 class="top_title">{{activityInfo.activityName}}</h3>-->
+  <!--</div>-->
+  <!-- 公共头部end -->
+  <div class="jm-advance">
+    <div class="jm-banner">
+      <img :src="banner" alt="">
+      <div class="jm-pr" v-if="activitydjs">
+        <div class="jm-prbox">
+          <div class="jm-btn btn-enroll" v-if="!enrollFlag" @click="registration()">立即报名</div>
+          <div class="jm-btn btn-unenroll" v-else>已报名</div>
+        </div>
+        <!-- <p>直播时间：9.19 19:30</p> -->
+      </div>
+      <div class="vcode-wrapper">
+<!--        <div class="vcode-pane vcode-live" v-on:click="isvcodeLive = true">-->
+<!--          <p>直播</p>-->
+<!--        </div>-->
+<!--        <div class="vcode-pane vcode-live" v-on:click="isvcodeLive = true">-->
+<!--          <span class="icon-live"></span>-->
+<!--          <p>直播</p>-->
+<!--        </div>-->
+      </div>
+
+
+      <div class="jm-headerInfo">
+        <!--倒计时-->
+        <div class="jm-liveCountdown">
+          <p v-if="activitydjs">活动开始倒计时 {{activitydjs}}</p>
+          <p v-else>活动进行中...</p>
+        </div>
+        <!--倒计时end-->
+        <!--报名数统计展示-->
+        <div class="jm-statistics">
+          <div class="statistics-itme">
+            <div class="itme-num">{{statisticsInfo.enrollNum || 0}}</div>
+            <span class="item-key">报名数</span>
+          </div>
+          <div class="statistics-itme">
+            <div class="itme-num">{{statisticsInfo.shareNum || 0}}</div>
+            <span class="item-key">分享数</span>
+          </div>
+          <div class="statistics-itme">
+            <div class="itme-num">{{statisticsInfo.browseNum || 0}}</div>
+            <span class="item-key">浏览数</span>
+          </div>
+        </div>
+        <!--报名数统计展示end-->
+      </div>
+    </div>
+
+    <img src="http://img.jomoo.com.cn/dev1/0/000/496/0000496950.fid" alt="专注高端卫浴">
+
+<!--    <div class="swiper-container" >-->
+<!--      <div class="swiper-wrapper">-->
+<!--        <div class="swiper-slide" v-on:click="isvcodeHome = true">-->
+<!--          <img src="./img/live/banner-home.jpg" alt="专注高端卫浴">-->
+<!--        </div>-->
+<!--        <div class="swiper-slide">-->
+<!--          <img src="./img/live/banner-brand.png" alt="专注高端卫浴">-->
+<!--        </div>-->
+<!--        <div class="swiper-slide">-->
+<!--          <img src="./img/live/banner-daxing.png" alt="专注高端卫浴">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <!--优惠券-->
+    <div class="jm-coupon">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/651/0000651355.fid" alt="优惠提前抢">
+      <div class="coupon-wrapper">
+<!--        <img src="http://img.jomoo.com.cn/dev1/0/000/496/0000496958.fid" alt="优惠提前抢">-->
+        <ul class="coupon-pane">
+          <li v-for="(item,index) in couponList">
+            <a @click="!enrollFlag ? registration() : getConpon('1',item.uuid)">
+              <img :src="item.banSrc" :alt="item.name">
+<!--              <div class="coupon-item">-->
+<!--                <span class="coupon-brief">满减券</span>-->
+<!--                <span class="coupon-val">{{item.name}}</span>-->
+<!--                <span class="coupon-key">{{item.rule}}</span>-->
+<!--                <button>立即领取 ></button>-->
+<!--              </div>-->
+            </a>
+          </li>
+        </ul>
+        <a @click="!enrollFlag ? registration() : getDetail(couponProduct.link)">
+          <img :src="couponProduct.banSrc" alt="大咖免费设计">
+        </a>
+      </div>
+    </div>
+    <!--优惠券end-->
+
+    <div class="jm-star">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650338.fid" alt="明星产品">
+      <div class="star-wrapper">
+        <div class="start-video">
+          <video id="video" :src="starProduct.video" controls loop autoplay playsinline
+                 webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"></video>
+        </div>
+        <div class="star-pane">
+          <a @click="!enrollFlag ? registration() : getDetail(starProduct.link)">
+            <img :src="starProduct.banSrc" alt="产品介绍" class="star-pic">
+            <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650322.fid" alt="产品图片" class="star-product">
+<!--            <span>??99</span>-->
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--爆款专区-->
+    <div class="jm-common">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650339.fid" alt="劲爆产品">
+      <div class="common-wrapper">
+        <ul class="common-pane">
+          <li v-for="(item,index) in commonList">
+            <a @click="!enrollFlag ? registration() : getDetail(item.link)">
+              <img :src="item.banSrc" :alt="item.name">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--爆款专区end-->
+
+    <!--秒杀专区-->
+    <div class="jm-seckill">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650340.fid" alt="限时限量秒杀">
+      <div class="seckill-wrapper">
+        <ul class="seckill-pane">
+          <li v-for="(item,index) in seckillList">
+            <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650348.fid" alt="限时限量秒杀">
+            <div class="seckill-brief">
+              <h3 class="brief-title">{{item.title}}</h3>
+              <ul class="seckill-product">
+                <li v-for="(v,k) in item.product">
+                  <div v-if="v.disabled" class="seckill-shadow">
+                    <span>秒杀已结束</span>
+                  </div>
+                  <a @click="!enrollFlag ? registration() : getDetail(v.link)">
+                    <img :src="v.banSrc" :alt="v.name">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--秒杀专区end-->
+
+    <a @click="!enrollFlag ? registration() : getDetail('http://m.ejomoo.com/h5/templet/shop/need_customized.html')">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650315.fid" alt="0元设计">
+    </a>
+
+    <!--拼团专区-->
+    <div class="jm-assemble">
+      <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650341.fid" alt="爱拼才会赢">
+      <div class="assemble-wrapper">
+        <ul class="assemble-pane">
+          <li v-for="(item,index) in assembleList">
+            <a @click="!enrollFlag ? registration() : getDetail(item.link)">
+              <img :src="item.banSrc" :alt="item.name">
+              <div class="assemble-num">
+                <div class="num-split">
+<!--                  <span>还剩{{+item.totalCount - +item.initCount - +statisticsInfo.enrollNum > 0 ? +item.totalCount - +item.initCount - +statisticsInfo.enrollNum : 0}}套</span>-->
+<!--                  <span>已拼{{+item.initCount + +statisticsInfo.enrollNum < +item.totalCount ? +item.initCount + +statisticsInfo.enrollNum : +item.totalCount}}套</span>-->
+                  <span>还剩{{+item.totalCount - +item.initCount > 0 ? +item.totalCount - +item.initCount : 0}}套</span>
+                  <span>已拼{{+item.initCount < +item.totalCount ? +item.initCount : +item.totalCount}}套</span>
+
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <!--拼团专区end-->
+
+    <img src="http://img.jomoo.com.cn/dev1/0/000/650/0000650342.fid" alt="集团承诺">
+
+    <div class="btn-wrap">
+      <a class="scroll-top">回到顶部</a>
+<!--      <a href="javascript:;" v-on:click="isvcodeHome = true">去主会场</a>-->
+    </div>
+
+    <!--报名弹出框-->
+    <div class="jm-mask" v-on:click="isregistration = false" v-if="isregistration"></div>
+    <div class="jm-popupbox" v-if="isregistration">
+      <!-- <form @submit="submitregistration"> -->
+      <div class="jm-registrationmian">
+        <div class="jm-tit">活动报名</div>
+        <div class="cell">
+          <div class="cell-bd">
+            <input type="text" name="name" class="input" placeholder="输入您的姓名" v-model="name" :value="name"/>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-bd">
+            <input type="number" name="mobile" class="input" @blur="bindInputMobile" maxlength='11'
+                   placeholder="输入您的手机号" v-model="mobile" :value="mobile"/>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-bd">
+            <input type="text" name="code" v-model="code" placeholder="验证码" maxlength='6'/>
+          </div>
+          <div class="cell-ft">
+            <div :class="iscode?'vcode jm-red':'vcode'" v-on:click='countDownPassCode'>{{getCodeButtonText}}</div>
+          </div>
+        </div>
+         <div class="cell">
+          <div class="cell-bd">
+            <div class="input" @click="cityResult"><span class="cityResult3x" v-if="!provinceCode">所在地区</span><span class="cityResult3" v-else>{{province}}{{city}}</span></div>
+          </div>
+        </div>
+        <div class="jm-bmnum">已有{{statisticsInfo.enrollNum || 0}}人报名</div>
+      </div>
+      <div class="jm-footer">
+        <span class="jm-btn jm-cancel" v-on:click="isregistration = false">取消</span>
+        <button class="jm-btn" v-on:click="submitregistration">确认</button>
+      </div>
+      <!-- </form> -->
+    </div>
+    <!--报名弹出框 end-->
+    <!--报名成功弹出框-->
+    <div class="jm-mask" v-on:click="isvcodeJomoo = false" v-if="isvcodeJomoo"></div>
+    <div class="jm-popupbox popupbox-enlist" v-if="isvcodeJomoo">
+      <p class="enlist-success clearfix"><span class="icon-success"></span>您已报名成功！</p>
+      <img src="img/demo/vcode-jomoo.jpg"/>
+      <p class="enlist-jomoo">关注九牧官方商城公众号, 了解更多活动信息</p>
+      <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxMTAyNDcyNg==&scene=124#wechat_redirect">去关注</a>
+    </div>
+    <!--报名成功弹出框 end-->
+    <!--直播二维码弹出框-->
+    <div class="jm-mask" v-on:click="isvcodeLive = false" v-if="isvcodeLive"></div>
+    <div class="popupbox-wrapper" v-if="isvcodeLive">
+      <div class="popupbox-vcode">
+        <img src="img/demo/vcode-live.png"/>
+        <p>长按二维码，进入直播间</p>
+      </div>
+      <div class="vcode-close" v-on:click="isvcodeLive = false"></div>
+    </div>
+    <!--直播二维码弹出框 end-->
+    <!--主会场弹出框-->
+    <div class="jm-mask" v-on:click="isvcodeHome = false" v-if="isvcodeHome"></div>
+    <div class="popupbox-wrapper" v-if="isvcodeHome">
+      <div class="popupbox-vcode">
+        <img src="img/demo/vcode-home.png"/>
+        <p class="font28">8月15日20点 准时开抢！更多优惠，进入官方商城查看！</p>
+      </div>
+      <div class="vcode-close" v-on:click="isvcodeHome = false"></div>
+    </div>
+    <!--主会场弹出框 end-->
+
+    <!--分享-->
+    <!--<div class="jm-share" v-on:click="binshare">-->
+    <!--<div class="mi-right-item"><img src="./img/live/redleve.png"/></div>-->
+    <!--</div>&lt;!&ndash;分享 end&ndash;&gt;-->
+
+    <!--邀请人-->
+    <!-- <div class="jm-inviter">
+      <div class="jm-inviter-footer">陈芳芳 邀请您参加活动</div>
+    </div> -->
+    <!--邀请人-->
+  </div>
+</div>
+<!--底部导航-->
+<nav class="nav">
+  <div class="footer_nav">
+    <ol>
+      <li class="nav_li1 active" id="home">
+        <a href="javascript:;">
+          <s></s>
+          <p>首页</p>
+        </a>
+      </li>
+      <li class="nav_li2" id="classify">
+        <a href="javascript:;">
+          <s></s>
+          <p>我的海报</p>
+        </a>
+      </li>
+      <li class="nav_li3" id="me">
+        <a href="#">
+          <s></s>
+          <p>个人中心</p>
+        </a>
+      </li>
+    </ol>
+  </div>
+</nav>
+<!--底部导航 end-->
+</body>
+<!--右侧浮动客服-->
+<div id="nav_right">
+</div>
+<!--右侧浮动客服 end-->
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/mui.min.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/main/vue-lazyload1.2.3.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/city.data.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/mui.picker.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/mui.poppicker.js"></script>
+<script type="text/javascript" src="./lib/swiper/js/swiper-3.4.2.jquery.min.js"></script>
+
+<script
+    type="text/javascript">document.write('<script src="js/base.js?timestamp=' + new Date().getTime() + '" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script type="text/javascript">
+  //时间戳
+  var random = new Date().getTime()
+</script>
+<script>
+  var activitiesUuid = getQueryString('activityNo') || ''//活动id
+  var mainCustomerUuid = getQueryString('mainCustomerUuid') || ''//活动id
+  if (!isEmpty(mainCustomerUuid)) {
+    localStorage.removeItem('mainCustomerUuid');
+    localStorage.setItem('mainCustomerUuid', mainCustomerUuid);
+  } else {
+    mainCustomerUuid = localStorage.getItem("mainCustomerUuid") || '';
+  }
+  //
+  setTimeout(() => {
+    var that = this
+    $('#home').click(function() {
+      window.location.href = './livepresale.html?activityNo=' + activitiesUuid + '&v=' + random
+    })
+    $('#classify').click(function() {
+      var customerUuid = localStorage.getItem("userId");//用户的uuid
+      var token = localStorage.getItem("token");
+      var sessionId = localStorage.getItem("sessionId");
+      if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+        window.location.href = './share.html?activityNo=' + activitiesUuid + '&v=' + random
+      } else {
+        window.location.href = './extension.html?activityNo=' + activitiesUuid + '&v=' + random
+      }
+
+    })
+    $('#me').click(function() {
+      window.location.href = './personalcenter.html?activityNo=' + activitiesUuid + '&v=' + random
+    })
+
+    $(document).on('click','.scroll-top',function(){
+      $("html,body").animate({scrollTop:'0px'},300);
+      return false;
+    });
+  })
+</script>
+<script type="text/javascript">
+  Vue.use(VueLazyload, {preLoad: 1.3, loading: 'https://img.jomoo.com.cn/dev1/0/000/145/0000145059.fid', attempt: 1});
+  var vue = new Vue({
+    el: "#app",
+    data: {
+      interval: '',
+      interval1: '',
+      interval2: '',
+      getCodeButtonText: '获取验证码',
+      iscode: false,
+      isregistration: false,//报名弹出框
+      isvcodeLive: false,//直播二维码弹出框
+      isvcodeJomoo: false,//商城二维码弹出框
+      isvcodeHome: false,//主会场二维码弹出框
+      mobile: '',//手机号
+      name: '',//姓名
+      code: '',//验证码
+      timer: '',//倒计时
+      codeSessionId: '',//获取验证码之后返回的SessionId
+      isclass: false,
+      isMini: false,
+      activitydjs: '',
+      coupon: [],
+      haveLogin: '',//页面加载获取到的customerUuid
+      activityInfo: '',//首页活动信息
+      statisticsInfo: '',
+      mainCustomerUuid: '',//分享人id
+      enrollFlag: false,//true为已报名
+      isWeiXin: false,
+      banner: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650336.fid',
+      couponList: [//优惠券
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/651/0000651356.fid',
+          name: '50',
+          rule: '单笔订单满2999使用',
+          link:'http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=9224328dcf7b484b93ae18dd0fd9c709',
+          uuid:'9224328dcf7b484b93ae18dd0fd9c709'
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/651/0000651357.fid',
+          name: '100',
+          rule: '单笔订单满4999使用',
+          link:'http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=56e50b764b594c7aa643f65581ea09af',
+          uuid:'56e50b764b594c7aa643f65581ea09af'
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/651/0000651358.fid',
+          name: '200',
+          rule: '单笔订单满9999使用',
+          link:'http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=6352023a54e14aeabb87587e7afce249',
+          uuid:'6352023a54e14aeabb87587e7afce249'
+        },
+      ],
+      couponProduct:{
+        banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650320.fid',
+        link: 'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=DZSQ500&activityUuid=24537c8992284100b467928b9d1bedeb&productIndex=2'
+      },
+      starProduct:{
+        banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650321.fid',
+        name: 'i4 pro',
+        link: 'http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8c3360bf79d74e83b722d968ac22ac56&productIndex=1',
+        video: 'https://1612.cdn-vod.huaweicloud.com/asset/926e25579a960342ece979af9f2ce1ff/play_video/59876bb3da1b8e44bda5bb6fe4b49697_1.mp4'
+      },
+      commonList: [
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650323.fid',
+          name: '36509',
+          link: 'http://m.ejomoo.com/h5/templet/detail/b2b-details-coupon.html?productUuid=b1a84f9ea9db4d5fb3c0edae62cc33d6&productIndex=10',
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650324.fid',
+          name: 'Z1D7202',
+          link: 'http://m.ejomoo.com/h5/templet/detail/b2b-details-coupon.html?productUuid=61d2d28b90af4c59b014c6d81151e236&productIndex=10',
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650325.fid',
+          name: '11306',
+          link: 'http://m.ejomoo.com/h5/templet/detail/b2b-details-coupon.html?productUuid=8dd93500e2dc48b08453a5c2ebc2b487&productIndex=10',
+        },
+      ],
+      seckillList: [
+        {
+          title: '09.04-09.08 每天10点准时开秒',
+          product:[
+            {
+              startTime: '2020/08/01 10:00:00',
+              endTime: '2020/08/02 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650349.fid',
+              name: '936008',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=936008-7Z-1&activityUuid=ee3e635d74544e219312a133728dea56&productIndex=2',
+              disabled: true,
+            },
+            {
+              startTime: '2020/08/01 10:00:00',
+              endTime: '2020/08/02 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650352.fid',
+              name: '33139',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=33139-050/1B-Z&activityUuid=ee3e635d74544e219312a133728dea56&productIndex=2',
+              disabled: true,
+            }
+          ]
+        },
+        {
+          title: '09.09-09.13 每天10点准时开秒',
+          product:[
+            {
+              startTime: '2020/08/05 10:00:00',
+              endTime: '2020/08/06 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650350.fid',
+              name: '937114',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=937114-1D-1&activityUuid=9a9bd6a079844706932bd1b197572375&productIndex=2',
+              disabled: true,
+            },
+            {
+              startTime: '2020/08/05 10:00:00',
+              endTime: '2020/08/06 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650351.fid',
+              name: '934612',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=934612-1B1-1&activityUuid=9a9bd6a079844706932bd1b197572375&productIndex=2',
+              disabled: true,
+            }
+          ]
+        },
+        {
+          title: '09.14-09.18 每天10点准时开秒',
+          product:[
+            {
+              startTime: '2020/08/11 10:00:00',
+              endTime: '2020/08/12 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650354.fid',
+              name: '33080',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=33080-229/1B1-Z&activityUuid=0667614862014954b1ea92503fb30096&productIndex=2',
+              disabled: false,
+            },
+            {
+              startTime: '2020/08/11 10:00:00',
+              endTime: '2020/08/12 00:00:00',
+              banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650882.fid',
+              name: 'S177013',
+              link:'http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=S177013-2B01-1&activityUuid=0667614862014954b1ea92503fb30096&productIndex=2',
+              disabled: false,
+            }
+          ]
+        },
+      ],
+      assembleList: [//拼团
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650326.fid',
+          name: '面盆龙头32261',
+          initCount: 73,
+          totalCount: 99,
+          link: 'http://m.ejomoo.com/h5/templet/pt/details.html?pt=promotion6000000009',
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650327.fid',
+          name: '四件套挂件9300250',
+          initCount: 57,
+          totalCount: 99,
+          link: 'http://m.ejomoo.com/h5/templet/pt/details.html?pt=promotion1000000003',
+        },
+        {
+          banSrc: 'http://img.jomoo.com.cn/dev1/0/000/650/0000650328.fid',
+          name: '智能盖板Z1D1816J',
+          initCount: 48,
+          totalCount: 99,
+          link: 'http://m.ejomoo.com/h5/templet/pt/details.html?pt=promotion1000000004',
+        },
+      ],
+      province: '',
+      city: '',
+      provinceCode: '', // 省code
+      cityCode: '', // 市code
+    },
+    created() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i) == 'micromessenger') {
+        this.isWeiXin = true
+      } else {
+        this.isWeiXin = false
+      }
+      this.haveLogin = localStorage.getItem('customerUuid');//获取登录信息
+      this.activitiesUuid = this.getUrlParam('activityNo') || ''//活动id
+      this.mainCustomerUuid = getQueryString('mainCustomerUuid') || ''//活动id
+      if (!isEmpty(this.mainCustomerUuid)) {
+        localStorage.removeItem('mainCustomerUuid');
+        localStorage.setItem('mainCustomerUuid', mainCustomerUuid);
+      } else {
+        this.mainCustomerUuid = localStorage.getItem("mainCustomerUuid") || '';
+      }
+      localStorage.setItem('activityNo', this.activitiesUuid);
+    },
+    mounted() {
+      this.initSwiper();
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        document.getElementById('video').play();
+      }, false);
+      var that = this;
+      this.timer = setInterval(() => {
+        var currenttime = new Date().getTime();
+        var realEndTime = '2020/09/19 19:30:00';
+        realEndTime = new Date(realEndTime).getTime()
+        var millisecond = Math.floor((realEndTime - currenttime) / 1000);
+        this.activitydjs = this.formatSeconds(millisecond);
+      }, 1000);
+			
+      this.getIndexData()
+    },
+    methods: {
+      initSwiper() {
+        setTimeout(()=>{
+          var mySwiper=new Swiper('.swiper-container', {
+            direction : 'horizontal',
+            autoplay : 2000,
+            loop: false, // 循环模式选项
+          })
+        },100)
+      },
+      // 地址选择
+      cityResult() {
+      	var that = this;
+        var cityPicker3 = new mui.PopPicker({
+          layer: 2
+        });
+        cityPicker3.setData(cityData);
+        cityPicker3.show(function(items) {
+          that.province = items[0].text;
+          that.city = items[1].text;
+          that.provinceCode = items[0].value;
+          that.cityCode = items[1].value;
+        });
+      },
+      //已报名
+      enrolment() {
+        mui.toast('已报名');
+      },
+      isEmpty(strVal) {
+        if (strVal == '' || strVal == null || strVal == undefined || strVal == 'undefined') {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      // 获取参数
+      getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+      },
+      //点击领红包
+      binshare() {
+        var that = this;
+        var customerUuid = localStorage.getItem("userId");//用户的uuid
+        var token = localStorage.getItem("token");
+        var sessionId = localStorage.getItem("sessionId");
+        if (!that.isEmpty(customerUuid) && !that.isEmpty(token) && !that.isEmpty(sessionId)) {
+          window.location.href = './share.html?activityNo=' + activitiesUuid + '&v=' + random
+        } else {
+          window.location.href = './extension.html?activityNo=' + activitiesUuid + '&v=' + random
+        }
+      },
+      //去登录
+      Login() {
+        var that = this
+        mui.confirm('当前未登录，是否去登录?', '提示', function(e) {
+          if (e.index == '1') {
+            console.log("用户点击取消");
+            var url = window.location.href
+            // let url =	"../livepresale.html?activitiesUuid=" +that.activitiesUuid +"&mainCustomerUuid=" +mainCustomerUuid
+            localStorage.setItem('loginJump', url);
+            window.location.href = './login/login1.html?isred=red&v=' + random
+          } else {
+            console.log("用户点击取消");
+          }
+        });
+      },
+      // 领取优惠券
+      getConpon(type, uuid) {
+        let that = this;
+        var customerUuid = localStorage.getItem('userId');
+        if (!that.isEmpty(customerUuid)) {
+          if (type == '1') {//优惠券
+            var token = localStorage.getItem('token');
+            var sessionId = localStorage.getItem('sessionId');
+            var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"receiveCoupon","map":{"token":"' + token + '","sessionId":"' + sessionId + '","customerUuid":"' + customerUuid + '","couponTypeUuid":"' + uuid + '"}}');
+            var url = window.basePath + 'jsonParam=' + DES3Str;
+            $.ajax({
+              type: 'POST',
+              url: url,
+              async: false,
+              dataType: 'json',
+              success: function(data) {
+                var returncode = data.return_code;
+                if (returncode != "0") {
+                  if (data.message == "成功") {
+                      mui.alert('领取' + data.message, '提示');
+                  } else {
+                    if (returncode != '49' && returncode != '50' && returncode != '51') {
+                        mui.alert(data.message, '提示');
+                    }
+                  }
+                } else {
+                    mui.alert('领取成功，使用时间：9月19日 00:00-24:00', '提示');
+                }
+              }
+            })
+          }
+        } else {
+          that.Login();
+        }
+      },
+      //跳转商品详情
+      getDetail(link){
+        window.location.href = link;
+      },
+      //跳转秒杀商品详情
+      getSeckillDetail(link, startTime, endTime){
+        var current = new Date();
+        var start = new Date(startTime);
+        var end = new Date(endTime);
+        if(current >= start && current <= end){
+          window.location.href = link;
+        }else if(current < start){
+          mui.toast('活动尚未开始')
+        }else {
+          mui.toast('活动已结束')
+        }
+      },
+      //清除定时器
+      cleartimer(e) {
+        if (e == '1') {
+          clearInterval(this.interval1);
+        } else if (e == '2') {
+          clearInterval(this.interval2);
+        } else {
+          clearInterval(this.interval);
+        }
+      },
+      //报名事件
+      registration() {
+        let that = this;
+        // let customerUuid = localStorage.getItem('customerUuid');
+        // if (!that.isEmpty(customerUuid)) {
+        that.isregistration = true;
+        // }else{
+        // 	that.Login();
+        // }
+      },
+      /**
+       * 输入手机号
+       */
+      bindInputMobile: function(e) {
+        var reg = /^1[0-9]{10}$/;
+        if (!reg.test(this.mobile)) {
+          mui.toast('请输入正确的手机号')
+          return
+        }
+        if (!this.isEmpty(this.mobile)) {
+          this.iscode = true;
+        }
+      },
+      /**
+       * 获取验证码
+       * */
+      /**
+       * 获取验证码
+       * */
+      countDownPassCode: function(e) {
+        var that = this;
+        if (this.timeOver) return
+        this.timeOver = true
+        var mobile = this.mobile
+        if (mobile.length == 0) {
+          mui.toast('手机号码不能为空')
+          this.timeOver = false;
+          return
+        } else {
+          var reg = /^1[0-9]{10}$/;
+          if (!reg.test(this.mobile)) {
+            mui.toast('请输入正确的手机号')
+            that.timeOver = false
+            return
+          }
+        }
+        var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"registrationSendMobileCode","map":{"mobile":"' + that.mobile + '"}}');
+        var url = window.basePath + 'jsonParam=' + DES3Str;
+        $.ajax({
+          type: 'POST',
+          url: url,
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            console.log(data)
+            if (data.return_code == '0') {
+              that.codeSessionId = data.sessionId
+              var i = 60
+              var intervalId = setInterval(function() {
+                i--
+                if (i <= 0) {
+                  that.disableGetMobileCode = false
+                  that.disableSubmitMobileCode = false
+                  that.getCodeButtonText = '获取验证码'
+                  that.nodjs = true
+                  that.timeOver = false
+                  clearInterval(intervalId)
+                } else {
+                  that.getCodeButtonText = '重新发送(' + i + ')';
+                  that.disableGetMobileCode = true
+                  that.disableSubmitMobileCode = false
+                  that.nodjs = false
+                }
+              }, 1000);
+            } else {
+              that.timeOver = false
+              mui.toast(data.message + '')
+            }
+          }
+        })
+
+      },
+
+      // 分享
+      getWeixinConfig() {
+        let that = this;
+        var url = location.href.split('#')[0];
+        var DES3Str = DES3.encrypt("123456789012345678901234", "{'opeType':'getWeixinConfigUnLogin','map':{'url':'" + url + "'}}");
+        var ajaxUrl = window.basePath + 'jsonParam=' + DES3Str;
+        $.ajax({
+          url: ajaxUrl,
+          dataType: "JSON",
+          type: "POST",
+          success: function(data) {
+            console.log(JSON.stringify(data));
+            var code = data.return_code;
+            if (code != "0") {
+              mui.alert(data.message);
+              if (code == "51") {
+                window.location.href = '../login/login1.html?activityNo=' + activitiesUuid + '&v=' + random;
+              }
+            } else {
+              that.getWeixinConfigHandle(data);
+            }
+          },
+          error: function() {
+            console.log("error");
+          }
+        })
+      },
+      getWeixinConfigHandle(data) {
+        var weixinConfigInfo = data.weixinPayInfo;
+        var appid = weixinConfigInfo.appid;
+        var timestamp = weixinConfigInfo.timestamp;
+        var noncestr = weixinConfigInfo.noncestr;
+        var signature = weixinConfigInfo.signature;
+        var access_token = weixinConfigInfo.access_token;
+        // 通过config接口注入权限验证配置;
+        wx.config({
+          debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: appid,
+          timestamp: timestamp,
+          nonceStr: noncestr,
+          signature: signature,
+          jsApiList: ['chooseImage', 'previewImage', 'uploadImage', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+      },
+      //分享
+      share() {
+        let that = this;
+        that.getWeixinConfig();
+
+        let customerUuid = localStorage.getItem('userId') || '';
+        var url = homePageUrl + '?mainCustomerUuid=' + customerUuid + "&activityNo=" + that.activitiesUuid;
+        wx.ready(function() {
+          var obj = {
+            title: that.activityInfo.activityName, // 分享标题
+            link: url, // 分享链接
+            desc: that.activityInfo.activityIntroduction,
+            imgUrl: 'http://img.jomoo.com.cn/dev1/0/000/651/0000651133.fid', // 分享图标
+            success: function() {
+              //分享调用接口
+              that.bindingsha();
+            },
+            cancel: function() {
+              console.log('取消')
+            }
+          }
+          wx.onMenuShareTimeline(obj);
+          wx.onMenuShareAppMessage(obj);
+          wx.onMenuShareQQ(obj);
+        });
+      },
+      //后台记录分享次数
+      bindingsha() {
+        var customerUuid = localStorage.getItem("userId");//用户的uuid
+        var token = localStorage.getItem("token");
+        var sessionId = localStorage.getItem("sessionId");
+        let that = this;
+        if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+          var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"liveEventShare","map":{"customerUuid":"' + customerUuid + '","sessionId":"' + sessionId + '","token":"' + token + '","sourceActivity":"' + that.activitiesUuid + '","mainCustomerUuid":"' + that.mainCustomerUuid + '"}}');
+          console.log(DES3.decrypt('123456789012345678901234', DES3Str))
+          var url = window.basePath + 'jsonParam=' + DES3Str;
+          $.ajax({
+            type: 'POST',
+            url: url,
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+              if (data.return_code == '0') {
+                that.statisticsInfo.shareNum = parseInt(that.statisticsInfo.shareNum) + 1
+              }
+            }
+          });
+        }
+      },
+      /**
+       * 提交报名
+       * */
+      submitregistration: function(e) {
+        var that = this
+        var mobile = that.mobile
+        var code = that.code
+        var name = that.name
+        var provinceCode = that.provinceCode
+        var cityCode = that.cityCode
+        if (that.isEmpty(name)) {
+          mui.toast('请输入您的姓名')
+          return
+        }
+        if (that.isEmpty(mobile)) {
+          mui.toast('请输入手机号码')
+          return
+        }
+        if (that.isEmpty(code)) {
+          mui.toast('请输入手机验证码')
+          return
+        }
+        if (that.isEmpty(provinceCode)) {
+          mui.toast('请选择报名地区')
+          return
+        }
+        if (that.isEmpty(that.codeSessionId)) {
+          mui.toast('请重新获取手机验证码')
+          return
+        }
+        var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"liveEventRegistration","map":{"type":"1","mobile":"' + mobile + '","mobileCode":"' + code + '","customerName":"' + name + '","sourceActivity":"' + that.activitiesUuid + '","sessionId":"' + that.codeSessionId + '","mainCustomerUuid":"' + that.mainCustomerUuid + '","provinceCode":"' + provinceCode + '","cityCode":"' + cityCode + '"}}');
+        var url = window.basePath + 'jsonParam=' + DES3Str;
+        $.ajax({
+          type: 'POST',
+          url: url,
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            console.log(data)
+            if (data.return_code == '0') {
+              that.enrollFlag = true
+              that.isvcodeJomoo = true;
+              that.isregistration = false;
+              var userId = data.customer.uuid;
+              localStorage.setItem("userId", userId);
+              localStorage.setItem("customerUuid", userId);
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("sessionId", data.sessionId);
+            } else {
+              mui.toast(data.message);
+              setTimeout(function(){that.isregistration = false;}, 2000);
+            }
+          }
+        })
+      },
+
+      // 获取首页信息
+      getIndexData() {
+        var that = this;
+        var customerUuid = localStorage.getItem("userId");//用户的uuid
+        var token = localStorage.getItem("token");
+        var sessionId = localStorage.getItem("sessionId");
+        var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"getLiveActivityDetail","map":{"activityNo":"' + that.activitiesUuid + '","mainCustomerUuid":"' + that.mainCustomerUuid + '","customerUuid":"' + customerUuid + '","sessionId":"' + sessionId + '","token":"' + token + '"}}');
+        var url = window.basePath + 'jsonParam=' + DES3Str;
+        console.log(url)
+        $.ajax({
+          type: 'POST',
+          url: url,
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            if (data.return_code == '0') {
+              that.enrollFlag = data.enrollFlag
+              that.activityInfo = data.activityInfo
+              that.statisticsInfo = data.statisticsInfo
+              if (that.isWeiXin) {
+                that.share();
+              }
+            } else {
+              mui.toast(data.message)
+            }
+          }
+        })
+      },
+
+      /**
+       * 格式化秒
+       * @param int  value 总秒数
+       * @return string result 格式化后的字符串
+       */
+      formatSeconds(value) {
+        if (value > 0) {
+          var theTime = parseInt(value);// 需要转换的时间秒
+          var theTime1 = 0;// 分
+          var theTime2 = 0;// 小时
+          var theTime3 = 0;// 天
+          if (theTime > 60) {
+            theTime1 = parseInt(theTime / 60);
+            theTime = parseInt(theTime % 60);
+            if (theTime1 > 60) {
+              theTime2 = parseInt(theTime1 / 60);
+              theTime1 = parseInt(theTime1 % 60);
+              if (theTime2 > 24) {
+                //大于24小时
+                theTime3 = parseInt(theTime2 / 24);
+                theTime2 = parseInt(theTime2 % 24);
+              }
+            }
+          }
+          var result = '';
+          if (theTime > 0) {
+            let m = theTime < 10 ? '0' + theTime : theTime;
+            result = " " + m + " 秒 ";
+          } else {
+            result = " " + "00" + " 秒 ";
+          }
+          if (theTime1 > 0) {
+            let f = theTime1 < 10 ? '0' + theTime1 : theTime1;
+            result = " " + f + "分 " + result;
+          }
+          if (theTime2 > 0) {
+            let s = theTime2 < 10 ? '0' + theTime2 : theTime2;
+            result = " " + s + "小时 " + result;
+          }
+          if (theTime3 > 0) {
+            let t = theTime3 < 10 ? '0' + theTime3 : theTime3;
+            result = " " + t + " 天 " + result;
+          }
+          return result;
+        } else {
+          //活动时间到了
+          return false
+        }
+      },
+    }
+  })
+
+</script>
+
+</html>
+

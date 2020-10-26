@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>注册成功</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../css/global.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/login.css" type="text/css" media="screen" />
+
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/init.js"></script>
+</head>
+<body>
+    <header class="brand-header active-header" style="background: #fff;">
+        <a class="brand-header-l" href="register.html"></a>
+        <h1>注册</h1>
+    </header><!-- /header -->
+    <section class="verify-win">
+        <img src="../img/win-img01.png" alt="">
+    </section>
+    <section class="verify-win-txt">
+        <p class="verify-win-gx">恭喜您注册成功！</p>
+        <p class="regstr"></p>
+        
+        <!-- <a id="bioLogin" class="btn btn-link verify-go" href="##">完善个人资料</a> -->
+        <a id="bioLogin" class="btn btn-link verify-go" href="##">立即购物</a>
+        <div class="m-guidebox">
+          <p class="p1 verify-ten "></p>
+        </div>
+        <p class="verify-ten m-verifyten"></p>
+        <!-- <a id="btnGo" href="##">立即购物</a> -->
+        
+    </section>
+    
+<div class="mui-backdrop m_backdropbox"></div>
+
+
+<script src="../js/mui.min.js"></script>
+<script src="../js/des3.js"></script>
+<script src="../js/base.js"></script>
+<script>
+    $(function(){
+    	if($(".mui-backdrop").is(":hidden")){
+		 $("#bioLogin").removeClass("m_village");
+		}else{
+		  $("#bioLogin").addClass("m_village");
+		  $("#btnGo").hide();
+		  $(".m-verifyten").hide();
+		  //$(".verify-ten").hide();
+		}
+		
+		/*dps代码*/
+		var mobile = localStorage.getItem("mobile"); //手机
+		if(!isEmpty(mobile)) {
+			_adwq.push([
+				'_setAction', '8uncqa',
+				mobile //请填入注册用户手机号或用户名 (请强制转换成字符串类型 )
+			]);
+		}
+    	
+    	$(".m_backdropbox").click(function(){
+    		$(".m_backdropbox").hide();
+    		$(".m-guidebox").hide();
+    		$("#bioLogin").removeClass("m_village");
+    		$("#btnGo").show();
+    		$(".m-verifyten").show();
+    	})
+    	
+        var DES3Str = DES3.encrypt("123456789012345678901234",'{"opeType":"getRegSuccessInfo","map":{}}');
+        var url = window.basePath+'jsonParam='+DES3Str;
+
+        $.ajax({
+            type: 'post',
+            url: url ,
+            dataType: 'text',
+            crossDomain: true,
+            success: function(data){
+                data = JSON.parse(data);
+                console.log(data);
+                var info = data.regSuccesInfo;
+                var regstr = "";
+                var infostr = "";
+                var infostr1 = "";
+                if (info.reg > 0 && info.regCount == 0) {
+                    regstr = '已经给您赠送'+info.reg+'积分，<br/>可以前往会员中心查看';
+                }else if(info.reg == 0 && info.regCount > 0){
+                    regstr = '已经给您赠送'+'商城优惠券，<br/>可以前往会员中心查看';
+                }else if(info.reg > 0 && info.regCount > 0){
+                    regstr = '已经给您赠送'+info.reg+'积分、'+'商城优惠券，<br/>可以前往会员中心查看';
+                }
+                $(".regstr").html(regstr);
+                if (info.info > 0 && info.infoCount == 0) {
+                    infostr = '完善资料可赠送'+info.info+'积分！';
+                    infostr1 = '完善资料可赠送'+info.info+'积分！';
+                }else if(info.info == 0 && info.infoCount > 0){
+                    infostr = '完善资料可赠送'+'商城优惠券！';
+                    infostr1 = '完善资料可赠送'+'商城优惠券！';
+                }else if(info.info > 0 && info.infoCount > 0){
+                    infostr = '完善资料可赠送'+info.info+'积分<br/>'+'商城优惠券！';
+                    infostr1 = '完善资料可赠送'+info.info+'积分'+'商城优惠券！';
+                }
+                $(".verify-ten").html(infostr);
+                $(".m-verifyten").html(infostr1);
+            }
+        });
+
+        $("#btnGo").click(function(){
+            var comeAddress = localStorage.getItem("comeAddress");
+            if( typeof comeAddress == undefined || comeAddress == null || comeAddress == ""){
+                window.location.href="../livepresale.html";
+            }else{
+                window.location.href = comeAddress;
+                localStorage.removeItem("comeAddress");
+            }
+        })
+        $("#bioLogin").click(function(){
+            var typeBioLogin = true;
+            localStorage.setItem("typeBioLogin",typeBioLogin);
+            //  window.location.href="../personal/set-account.html";
+            window.location.href="../livepresale.html";
+        })
+    })
+</script>
+</body>
+</html>

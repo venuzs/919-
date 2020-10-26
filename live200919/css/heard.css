@@ -1,0 +1,6 @@
+.activity_heard.top_header{
+  border: none;
+}
+.activity_heard.top_header .top_icon.go_back{
+  background-image: url('../img/live/top_back.png');
+}

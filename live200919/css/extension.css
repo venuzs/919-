@@ -1,0 +1,122 @@
+.exten_bg{
+  background: #ffffff;
+}
+.jm_exten_ad{
+  position: relative;
+}
+.jm_exten_ad p{
+  position: absolute;
+  top:0;
+  font-size:.8rem;
+  font-family:ZYWenYiHei;
+  color:#fff;
+  z-index: 1000;
+  font-weight: bold;
+  text-align: center;
+  left:22%;
+  top:30%
+}
+.step_box{
+  padding: 0 1.5rem;
+  color: #333;
+}
+.step{
+  margin-top: 0.8rem;
+}
+.step .step_title{
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.step .step_item{
+  font-size: 0.6rem;
+  line-height: 1.25rem;
+}
+.make_money{
+  padding:0 0.8rem;
+  margin-top: 1.85rem;
+  margin-bottom: 1.5rem;
+}
+.make_money .make_btn {
+  width: 100%;
+  height: 1.85rem;
+  text-align: center;
+  line-height: 1.85rem;
+  color: #ffffff;
+  font-size: 0.6rem;
+  background: #F02C2C;
+  font-weight:bold;
+  border-radius:0.4rem;
+}
+
+/*分享海报*/
+.m_bg{
+  background: #e6e6e6;
+  min-height: auto;
+}
+.jm-share{
+  background: #ffffff;
+  margin: 1rem .8rem 0;
+}
+
+.hidepic {
+  display: none;
+}
+
+.jm-share-btn{
+  width: 80%;
+  margin: .5rem auto 0;
+  height:1.8rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1.8rem;
+  background:rgba(240,44,44,1);
+  border-radius:.6rem;
+}
+
+.ver-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	position: absolute;
+	top: 2.25rem;;
+	left: 0;
+	right: 0;
+	bottom: 2.3rem;
+	z-index: 99;
+}
+.ver-loading img{
+    width: 40%;
+}
+
+
+.footer_nav ol li.nav_li1 s{
+	background: url('../img/live/index1.png');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.footer_nav ol li.nav_li1.active s{
+	background: url('../img/live/index.png') ;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.footer_nav ol li.nav_li2 s{
+	background: url('../img/live/money.png');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.footer_nav ol li.nav_li2.active s{
+	background: url('../img/live/money1.png') ;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.footer_nav ol li.nav_li3 s{
+	background: url('../img/live/mine.png') ;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.footer_nav ol li.nav_li3.active s{
+	background: url('../img/live/mine1.png') ;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}

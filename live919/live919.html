@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 移动端手机号码/邮箱识别 -->
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!-- 微信调试 取消缓存 -->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<title>九牧919卫浴直播节</title>
+	<meta name="description"
+		content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+	<meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧官网、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+	<link rel="stylesheet" type="text/css" href="https://m.ejomoo.com/css/main/global.css" />
+	<link rel="stylesheet" type="text/css" href="https://m.ejomoo.com/css/main/index.css">
+	<link rel="stylesheet" type="text/css" href="http://m.ejomoo.com/css/main/amazeui.swiper.min.css">
+	<style>
+		a{
+			display: block;
+		}
+		.pageDisabled{
+			pointer-events: none;
+		}
+		.pct30 {
+			float: left;
+			width: 30%;
+			margin: calc(6rem / 46.875) 1.4%;
+
+		}
+		.pct46 {
+			float: left;
+			width: 46%;
+			margin: calc(6rem / 46.875) 1.5%;
+		}
+		.pct92 {
+			float: left;
+			width: 92%;
+			margin: calc(6rem / 46.875) 0;
+		}
+		.pct94 {
+			float: left;
+			width: 94%;
+			margin: calc(6rem / 46.875) 0;
+		}
+
+		.contentbox{
+			background-color: #ea1b1b;
+		}
+		.carousel-pane{
+			height: calc(1222rem / 46.875);
+		}
+		.nav-wrapper {
+			position: relative;
+			width: 100%;
+			height: calc(150rem / 46.875);
+			/*margin-top: calc(-150rem / 46.875);*/
+			/*background-color: rgba(255, 255, 255, .8);*/
+			z-index: 100
+		}
+		.nav-pane {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: calc(150rem / 46.875);
+			padding: calc(10rem / 46.875) calc(10rem / 46.875) calc(10rem / 46.875) 0;
+			background-color: #7D0000;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+		.nav-pane .nav-content {
+			width: calc(100% - 37rem / 46.875);
+			overflow: hidden;
+		}
+		.nav-pane .nav-btn {
+			float: left;
+			width: calc(37rem / 46.875);
+			height: calc(136rem / 46.875);
+		}
+		.nav-pane ul {
+			display: flex;
+			flex-wrap: nowrap;
+			height: calc(132rem / 46.875);
+			overflow: hidden;
+		}
+		.nav-pane li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: calc(109rem / 46.875);
+			height: calc(132rem / 46.875);
+			margin: 0 calc(5rem / 46.875);
+			background: url("http://img.jomoo.com.cn/dev1/0/000/591/0000591574.fid") no-repeat;
+			background-size: 100%;
+			flex-shrink: 0;
+		}
+		.nav-pane li span{
+			display: block;
+			line-height: 1.1;
+			text-align: center;
+			font-size: calc(32rem / 46.875);
+			font-weight: bold;
+			color: #AE132A;
+		}
+		.fixedTop {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 100;
+		}
+		.product-wrapper{
+			position: relative;
+		}
+		.product-pane{
+			/*position: absolute;*/
+			/*top: 0;*/
+			/*left: 0;*/
+		}
+		.product-pane .product-title{
+			width: 53.46%;
+			margin: 0 auto;
+			padding: calc(20rem / 46.875) 0 calc(10rem / 46.875);
+		}
+		.product-pane > ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.product-coupon{
+			background-color: #b91212;
+		}
+		.product-coupon .pct30{
+			margin: calc(10rem / 46.875) 0.5%;
+		}
+		.product-coupon .coupon-tip{
+			margin-top: calc(-10rem / 46.875);
+			text-align: center;
+			font-size: calc(16rem / 46.875);
+			color: #fff;
+		}
+
+
+		.video-wrapper{
+			position: relative;
+		}
+		.video-pane{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: calc(100% - 18rem/48.765);
+			height: calc(347rem/48.765);
+			margin: calc(6rem/48.765) calc(9rem/48.765) 0;
+			background-color: #000;
+			border-radius: calc(10rem/48.765);
+		}
+		.video-pane video{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: calc(339rem/48.765);
+			border-radius: calc(10rem/48.765);
+		}
+		.video-pane .video-pic{
+			position: absolute;
+			left: 5%;
+			bottom: -49%;
+			width: calc(242rem/48.765);
+			height: calc(216rem/48.765);
+		}
+
+		.tip-wrap{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			/*margin-top: calc(-630rem/48.765);*/
+		}
+
+		.btn-wrap{
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: calc(110rem/48.765);
+		}
+		.btn-wrap a{
+			width: calc(210rem/48.765);
+			height: calc(72rem/48.765);
+			margin: 0 calc(30rem/48.765);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: PingFangSC, sans-serif;
+			font-size: calc(32rem/48.765);
+			font-weight: bold;
+			color: #820000;
+			background-image: linear-gradient(0deg,
+			#ffbb70 0%,
+			#fee7c1 100%),
+			linear-gradient(0deg,
+					#000000 0%,
+					#ffffff 100%);
+			box-shadow: 0px 5px 5px 0px
+			rgba(181, 0, 2, 0.75);
+			border-radius: calc(36rem/48.765);
+		}
+		/*直播浮窗*/
+		.live-float{
+			position: fixed;
+			right: 0;
+			bottom: 20%;
+			width: 30%;
+			z-index: 103;
+		}
+		/*弹出框*/
+		.jm-mask{
+
+			background: rgba(0,0,0,0.4);
+			position: fixed;
+			top:0;
+			left:0;
+			bottom: 0;
+			right:0;
+			z-index: 105;
+		}
+		.popupbox-wrapper{
+			width: 100%;
+			position: fixed;
+			top:40%;
+			left:50%;
+			transform:translateX(-50%) translateY(-50%);
+			z-index: 106;
+		}
+		.popupbox-wrapper .popupbox-vcode{
+			width: 80%;
+			margin: 0 auto;
+			padding: calc(80rem / 46.875) 0;
+			text-align: center;
+			background:rgba(255,255,255,1);
+			border-radius: calc(16rem / 46.875);
+		}
+		.popupbox-wrapper .popupbox-vcode img{
+			width: calc(330rem / 46.875);
+			height: calc(330rem / 46.875);
+		}
+		.popupbox-wrapper .popupbox-vcode p{
+			margin-top: calc(40rem / 46.875);
+			padding: 0 calc(80rem / 46.875);
+			font-size: calc(32rem / 46.875);
+			color: #333;
+		}
+		.popupbox-wrapper .vcode-close{
+			display: flex;
+			justify-content: center;
+			padding-top: calc(40rem / 46.875);
+		}
+		.popupbox-wrapper .vcode-close span{
+			display: block;
+			width: calc(75rem / 46.875);
+			height: calc(75rem / 46.875);
+			background: url('http://img.jomoo.com.cn/dev1/0/000/602/0000602162.fid') no-repeat center top/cover;
+		}
+	</style>
+</head>
+
+<body>
+<div id="app" :class="{pageDisabled: !pageFlag}">
+	<!--九牧头部-->
+<!--	<div class="holder-m_header">-->
+<!--		<header class="m_header clearfix">-->
+<!--			&lt;!&ndash;<div class="header_address fl"><span></span><s></s></div>&ndash;&gt;-->
+<!--			<h1><img src="http://img.jomoo.com.cn/dev1/0/000/307/0000307316.fid" id="logo" class="top_logo"></h1>-->
+<!--			<div class="m_search" id="m_searchbox_index" @click="searchEvent">-->
+<!--				<img src="https://m.ejomoo.com/img/search.png" alt="">-->
+<!--				智能马桶-->
+<!--			</div>-->
+<!--		</header>-->
+<!--	</div>-->
+	<div class="contentbox">
+		<component-carousel></component-carousel>
+		<div :id="yhq.id" class="product-wrapper product-coupon">
+<!--			<img :src="yhq.bg" alt="" class="product-bg">-->
+			<div class="product-pane">
+				<h3 class="product-title"><img :src="yhq.title" alt=""></h3>
+				<p class="coupon-tip">使用时间：9月19日00:00 - 24:00</p>
+				<ul class="clearfix">
+					<li v-for="(item,index) in yhq.list" :id="item.id" :class="item.class">
+						<a v-if="index != yhq.list.length-1" v-on:click="getConpon('1',item.productUuid)">
+							<img :src="item.src" alt="">
+						</a>
+						<a v-else v-on:click="goDetial(item.link,item.productUuid,item.productIndex,item.activityUuid)">
+							<img :src="item.src" alt="">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<component-section :product="zbhl"></component-section>
+		<component-nav :navlist="nav"></component-nav>
+		<component-section :product="cztc"></component-section>
+		<div :id="znmt.id" class="product-wrapper">
+			<img :src="znmt.bg" alt="" class="product-bg">
+			<div class="product-pane">
+				<h3 class="product-title"><img :src="znmt.title" alt=""></h3>
+				<ul class="clearfix">
+					<li v-for="(item,index) in znmt.list" :id="item.id" :class="item.class">
+						<div v-if="index == 0" class="video-wrapper" v-on:click="goDetial(item.link,item.productUuid,item.productIndex,item.activityUuid)">
+							<img :src="item.src" alt=""/>
+							<div class="video-pane">
+								<video id="video" :src="item.videoLink" controls loop autoplay playsinline
+									   webkit-playsinline="true" x-webkit-airplay="true" x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"></video>
+								<img :src="item.videoPic" class="video-pic">
+							</div>
+						</div>
+						<a v-else v-on:click="goDetial(item.link,item.productUuid,item.productIndex,item.activityUuid)">
+							<img :src="item.src" alt="">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<component-section :product="ysg"></component-section>
+		<component-section :product="dzysg"></component-section>
+		<component-section :product="tc"></component-section>
+		<component-section :product="lyhs"></component-section>
+		<component-section :product="lyfyg"></component-section>
+		<component-section :product="wj"></component-section>
+		<component-section :product="hjdq"></component-section>
+		<component-section :product="lyjjcdd"></component-section>
+		<component-section :product="qwdz"></component-section>
+		<div id="szsm" class="tip-wrap"><img :src="szsm.src" alt="":class="szsm.class"></div>
+		<div class="btn-wrap" v-html="btn"></div>
+	</div>
+	<!--底部导航-->
+	<nav class="nav">
+		<div class="footer_nav">
+			<ol>
+				<li class="nav_li1" id="home" @click="homeClickEvent">
+					<a href="javascript:;">
+						<s></s>
+						<p>首页</p>
+					</a>
+				</li>
+				<li class="nav_li2" id="classify" @click="classifyClickEvent">
+					<a href="javascript:;">
+						<s></s>
+						<p>分类</p>
+					</a>
+				</li>
+				<li class="nav_li5" id="wholesaleBtn" style="display: none;">
+					<a href="javascript:;">
+						<s></s>
+						<p></p>
+					</a>
+				</li>
+				<li class="nav_li3" id="shopcart" @click="shopcartClickEvent">
+					<a href="javascript:;">
+						<s></s>
+						<p>购物车</p>
+						<span id="productnum" class="y_fixnumber y_badge"></span>
+					</a>
+				</li>
+				<li class="nav_li4" id="me" @click="meClickEvent">
+					<a href="#">
+						<s></s>
+						<p>我的</p>
+					</a>
+				</li>
+			</ol>
+		</div>
+	</nav>
+    <!--直播浮窗-->
+	<div class="live-float">
+		<img src="http://img.jomoo.com.cn/dev1/0/000/625/0000625286.fid" alt="">
+	</div>
+	<!--直播浮窗 end-->
+	<!--直播二维码弹出框-->
+	<modal-live :live="isvcodeLive" @change="live => isvcodeLive = live"></modal-live>
+	<!--直播二维码弹出框 end-->
+</div>
+</body>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/vue2.5.16.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/vue-lazyload1.2.3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/init.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script type="text/javascript" src="http://m.ejomoo.com/js/main/amazeui.swiper.js"></script>
+<script type="text/javascript">
+	Vue.use(VueLazyload, { preLoad: 1.3, loading: 'https://img.jomoo.com.cn/dev1/0/000/145/0000145059.fid', attempt: 1 });
+	const ComponentCarousel = {
+		data() {
+			return {
+				carouselList: [
+					{src:'http://img.jomoo.com.cn/dev1/0/000/665/0000665688.fid'},
+				]
+			}
+		},
+		template: ' <div class="swiper-container" >\n' +
+				'      <div class="swiper-wrapper">\n' +
+				'        <div v-for="(item,index) in carouselList" class="swiper-slide">\n' +
+				'          <img :src="item.src" alt="">\n' +
+				'        </div>\n' +
+				'      </div>\n' +
+				'    </div>',
+	};
+	const ComponentNav = {
+		data() {
+			return {
+				navBtn: "http://img.jomoo.com.cn/dev1/0/000/591/0000591573.fid"
+			}
+		},
+		props:{
+			navlist: Array
+		},
+		template: '<div class="nav-wrapper">\n' +
+				'    <div class="nav-pane">\n' +
+				'      <img :src="navBtn" alt="" class="nav-btn" />\n' +
+				'      <div class="nav-content">\n' +
+				'        <ul>\n' +
+				'          <li v-for="(item,index) in navlist" :data-id="item.target" @click="skip(item.target)">\n' +
+				'            <span v-html="item.name"></span>\n' +
+				'          </li>\n' +
+				'        </ul>\n' +
+				'      </div>\n' +
+				'    </div>\n' +
+				'  </div>',
+		methods: {
+			scroll() {
+				const headerHeight = document.querySelector('.m_header') && document.querySelector('.m_header').offsetHeight || 0;
+				const navWrapper = document.querySelector('.nav-wrapper');
+				const navPane = document.querySelector('.nav-pane');
+				return this.throttle(() => {
+					if (navWrapper.getBoundingClientRect().top <= headerHeight) {
+						navPane.classList.add('fixedTop');
+					} else {
+						navPane.classList.remove('fixedTop');
+					}
+				}, 16, { leading: false, trailing: false });
+			},
+			throttle(func, wait, options = {}) {
+				const { leading = true, trailing = true } = options;
+				let timeout, context, args, result;
+				let previous = 0;
+				const later = function () {
+					previous = !leading ? 0 : (Date.now() || new Date().getTime());
+					timeout = null;
+					result = func.apply(context, args);
+					if (!timeout) context = args = null;
+				}
+				const throttled = function () {
+					const now = Date.now() || new Date().getTime();
+					if (!previous && !leading) previous = now;
+					// remaining 为距离下次执行 func 的时间
+					// remaining > wart，表示系统时间被调整过
+					const remaining = wait - (now - previous);
+					context = this;
+					args = arguments;
+					if (remaining <= 0 || remaining > wait) {
+						if (timeout) {
+							clearTimeout(timeout);
+							timeout = null;
+						}
+						// 重置previous
+						previous = now;
+						// 执行函数
+						result = func.apply(context, args);
+						if (!timeout) context = args = null;
+					} else if (!timeout && trailing) {
+						timeout = setTimeout(later, remaining);
+					}
+					return result;
+				}
+				throttled.cancel = function () {
+					clearTimeout(timeout);
+					previous = 0;
+					timeout = context = args = null;
+				}
+				return throttled;
+			},
+			getOffset(dom) {
+				let offset = {
+					left: 0,
+					top: 0,
+				};
+				while (dom !== document.body) {
+					offset.top += dom.offsetTop;
+					offset.left += dom.offsetLeft;
+					dom = dom.offsetParent;
+				}
+				return offset;
+			},
+			skip(id) {
+				const headerHeight = document.querySelector('.m_header') && document.querySelector('.m_header').offsetHeight || 0;
+				const navHeight = document.querySelector('.nav-wrapper').offsetHeight;
+				let dom = $("#" + id).get(0)
+				let scrollHeight = this.getOffset(dom).top - headerHeight - navHeight;
+				$('html,body').animate({ scrollTop: scrollHeight + 'px' }, 500);
+			}
+		},
+		mounted() {
+			const scrollFn =  this.scroll();
+			$(document).on('scroll', scrollFn);
+
+			const navContent = document.querySelector('.nav-content ul');
+			navContent.addEventListener('touchstart', e => {
+				const pos_start = e.touches[0].pageX;
+				const start_left = parseFloat(getComputedStyle(navContent).marginLeft);
+
+				const content_width = navContent.scrollWidth;
+				const container_width =  document.querySelector('.nav-content').offsetWidth;
+
+				const touchmove = ev => {
+					const pos_move = ev.touches[0].pageX;
+					const diff = Math.min(0, Math.max(pos_move - pos_start + start_left, container_width - content_width));
+					navContent.style.marginLeft = diff + 'px';
+				};
+				const touchend = ev => {
+					document.removeEventListener('touchmove', touchmove);
+					document.removeEventListener('touchend', touchend);
+				};
+
+				document.addEventListener('touchmove', touchmove);
+				document.addEventListener('touchend', touchend);
+			})
+		}
+	};
+	const ComponentSection = {
+		props:{
+			product: String
+		},
+		template: '<div :id="product.id" class="product-wrapper">\n' +
+				// '    <img :src="product.bg" alt="" class="product-bg">\n' +
+				'    <div class="product-pane">\n' +
+				'      <h3 class="product-title"><img :src="product.title" alt=""></h3>\n' +
+				'      <ul class="clearfix">\n' +
+				'        <li v-for="(item,index) in product.list" :id="item.id" :class="item.class">\n' +
+				'          <a v-on:click="goDetial(item.link,item.productUuid,item.productIndex,item.activityUuid)">\n' +
+				'            <img :src="item.src" alt="">\n' +
+				'          </a>\n' +
+				'        </li>\n' +
+				'      </ul>\n' +
+				'    </div>\n' +
+				'  </div>',
+		methods: {
+			goDetial(url, productUuid, productIndex, activityUuid) {
+				if (this.$root.isMini) {  // 如果当前处于小程序中，调用跳转到小程序页面方法
+					if (productIndex == 1) {
+						wx.miniProgram.navigateTo({url: '/pages/shop/details?productUuid=' + productUuid + '&productIndex=' + productIndex + ''})
+					} else if (productIndex == 10) {
+						wx.miniProgram.navigateTo({url: '/pages/shop/detailsCoupon?productUuid=' + productUuid + '&productIndex=' + productIndex + ''})
+					} else if (productIndex == 20) {
+						wx.miniProgram.navigateTo({url: '/pages/activity/getcoupon?logUuid=' + productUuid + ''})
+					} else if (productIndex == 2) {
+						wx.miniProgram.navigateTo({url: '/pages/shop/detailsSeckill?skuNo=' + productUuid + '&activityUuid=' + activityUuid + ''})
+					} else if (productIndex == 4) {
+						wx.miniProgram.navigateTo({url: '/pages/pt/details?pt=' + activityUuid + ''})
+					} else {
+						window.location.href = url;
+					}
+				} else {
+					window.location.href = url;
+				}
+			},
+		},
+	};
+	const ModalLive = {
+		props:{
+			live: Boolean
+		},
+		methods: {
+			close(){
+				this.$emit("change", false);
+			}
+		},
+		template: '<div>\n' +
+				'  <div class="jm-mask" @click="close" v-if="live"></div>\n' +
+				'   <div class="popupbox-wrapper" v-if="live">\n' +
+				'    <div class="popupbox-vcode">\n' +
+				'      <img src="http://img.jomoo.com.cn/dev1/0/000/669/0000669843.fid" alt=""/>\n' +
+				'      <p>长按二维码，进入直播间</p>\n' +
+				'     </div>\n' +
+				'    <div class="vcode-close" @click="close"><span></span></div>\n' +
+				'  </div>\n' +
+				'</div>'
+	}
+	let vue = new Vue({
+		el: "#app",
+		data: {
+			isMini: false,
+			pageFlag: false,
+			isvcodeLive: false,
+			nav: [
+				{ name: "超值<br/>套餐", target:"cztc" },
+				{ name: "智能<br/>专区", target:"znmt" },
+				{ name: "浴室柜专区", target:"ysg" },
+				{ name: "定制<br/>浴室柜专区", target:"dzysg" },
+				{ name: "陶瓷<br/>专区", target:"tc" },
+				{ name: "淋浴<br/>花洒", target:"lyhs" },
+				{ name: "淋浴房浴缸", target:"lyfyg" },
+				{ name: "五金<br/>专区", target:"wj" },
+				{ name: "环境<br/>电器", target:"hjdq" },
+				{ name: "晾衣机<br/>集成<br/>吊顶", target:"lyjjcdd" },
+				{ name: "全屋<br/>定制", target:"qwdz" },
+				{ name: "送装<br/>说明", target:"szsm" },
+			],
+			yhq: {
+				id: 'yhq',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586155.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/651/0000651356.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=9224328dcf7b484b93ae18dd0fd9c709", productUuid: "9224328dcf7b484b93ae18dd0fd9c709", productIndex: "20" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/651/0000651357.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=56e50b764b594c7aa643f65581ea09af", productUuid: "56e50b764b594c7aa643f65581ea09af", productIndex: "20" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/651/0000651358.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/shop/getcoupon.html?uuid=6352023a54e14aeabb87587e7afce249", productUuid: "6352023a54e14aeabb87587e7afce249", productIndex: "20" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/588/0000588164.fid", class: ["pct92"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details-seckill.html?skuNo=DZSQ500&activityUuid=24537c8992284100b467928b9d1bedeb&productIndex=2",activityUuid: "24537c8992284100b467928b9d1bedeb", productUuid: "DZSQ500", productIndex: "2" },
+				]
+			},
+			zbhl: {
+				id: 'zbhl',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586156.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666515.fid", class: ["pct92"], link: "javascript:;" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665207.fid", class: ["pct92 live-room"], link: "javascript:;" },
+				]
+			},
+			cztc: {
+				id: 'cztc',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586157.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667833.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=6daf73ac8fa14298b7ae5ee9c72b074d&productIndex=1", productUuid: "6daf73ac8fa14298b7ae5ee9c72b074d", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667834.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=18b06318c2974466972403e30c9bb661&productIndex=1", productUuid: "18b06318c2974466972403e30c9bb661", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668943.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d92c043cedf544b9a0dccb4f291edcf3&productIndex=1", productUuid: "d92c043cedf544b9a0dccb4f291edcf3", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668944.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=368a0cf7ee044423989e3ae3e524f118&productIndex=1", productUuid: "368a0cf7ee044423989e3ae3e524f118", productIndex: "1" },
+				]
+			},
+			znmt: {
+				id: 'znmt',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586158.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667851.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8c3360bf79d74e83b722d968ac22ac56&productIndex=1", productUuid: "8c3360bf79d74e83b722d968ac22ac56", productIndex: "1",
+					  videoLink: "https://1612.cdn-vod.huaweicloud.com/asset/926e25579a960342ece979af9f2ce1ff/play_video/59876bb3da1b8e44bda5bb6fe4b49697_1.mp4", videoPic: "http://img.jomoo.com.cn/dev1/0/000/593/0000593499.fid"
+					},
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665315.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=3422bd8013e1482aa2a10e16153f9020&productIndex=1", productUuid: "3422bd8013e1482aa2a10e16153f9020", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665316.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=da9f2f508ed64783ac1774041bec9fc9&productIndex=1", productUuid: "da9f2f508ed64783ac1774041bec9fc9", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665317.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8c3360bf79d74e83b722d968ac22ac56&productIndex=1", productUuid: "8c3360bf79d74e83b722d968ac22ac56", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665318.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=767f8650dc9145eb9d10773985f3a75d&productIndex=1", productUuid: "767f8650dc9145eb9d10773985f3a75d", productIndex: "1" },
+				]
+			},
+			ysg: {
+				id: 'ysg',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586159.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665387.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=4c8d110ebe6345d7b39e195c132d00da&productIndex=1", productUuid: "4c8d110ebe6345d7b39e195c132d00da", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665388.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8b25f6f7e28f4c0ba56a755ad4cc34ad&productIndex=1", productUuid: "8b25f6f7e28f4c0ba56a755ad4cc34ad", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665389.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=4344d6f95e1e4a64b840de2ebe66eeb4&productIndex=1", productUuid: "4344d6f95e1e4a64b840de2ebe66eeb4", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667849.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8cbd223da01645d89efaf6fdc3f8a2e5&productIndex=1", productUuid: "8cbd223da01645d89efaf6fdc3f8a2e5", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668947.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=60bfec41552a44379a9cea3303c2a527&productIndex=1", productUuid: "60bfec41552a44379a9cea3303c2a527", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665687.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=76bc17eaa2774cd9b1e0a91b557bb4f8&productIndex=1", productUuid: "76bc17eaa2774cd9b1e0a91b557bb4f8", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668948.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d6a25cb8ccf541cab679e22b8cc7c0c6&productIndex=1", productUuid: "d6a25cb8ccf541cab679e22b8cc7c0c6", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668949.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d55f2cec6cd24ce293a32fdeec3d4e67&productIndex=1", productUuid: "d55f2cec6cd24ce293a32fdeec3d4e67", productIndex: "1" },
+				]
+			},
+			dzysg: {
+				id: 'dzysg',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586160.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668945.fid", class: ["pct94"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=faf98dd59e994b559d2f6fd45dce9678&productIndex=1", productUuid: "faf98dd59e994b559d2f6fd45dce9678", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668946.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=18b3bda2f9fa4f2d895175a26f79db19&productIndex=1", productUuid: "18b3bda2f9fa4f2d895175a26f79db19", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665325.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=71451d4d12ff4c8098eca5d8a8f4a7f5&productIndex=1", productUuid: "71451d4d12ff4c8098eca5d8a8f4a7f5", productIndex: "1" },
+				]
+			},
+			tc: {
+				id: 'tc',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586162.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665327.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=3e1d50280f6645e1ad2985671d20f21c&productIndex=1", productUuid: "3e1d50280f6645e1ad2985671d20f21c", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665328.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=41d02cab7fba48faad48f00085370eb3&productIndex=1", productUuid: "41d02cab7fba48faad48f00085370eb3", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665329.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=a851cd7c91a240149eea3c72b37f0cd5&productIndex=1", productUuid: "a851cd7c91a240149eea3c72b37f0cd5", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665330.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=4b49c5957dad418db3ee845200c23d6b&productIndex=1", productUuid: "4b49c5957dad418db3ee845200c23d6b", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665331.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=2db54f77a37f4a08a6454ae409b2f3ce&productIndex=1", productUuid: "2db54f77a37f4a08a6454ae409b2f3ce", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665332.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=c084a9c91c074c3abbd7baf7e4e12410&productIndex=1", productUuid: "c084a9c91c074c3abbd7baf7e4e12410", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665333.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d151f8173d114e5db829ee70d94aeeae&productIndex=1", productUuid: "d151f8173d114e5db829ee70d94aeeae", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665334.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=c7eacb46c1364fbba97c6e79be0de895&productIndex=1", productUuid: "c7eacb46c1364fbba97c6e79be0de895", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665335.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=fe1a0a231541444da610737df4cc49a5&productIndex=1", productUuid: "fe1a0a231541444da610737df4cc49a5", productIndex: "1" },
+				]
+			},
+			lyhs: {
+				id: 'lyhs',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586163.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667848.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d46f682f02c4460b9e7f630df63fa7cd&productIndex=1", productUuid: "d46f682f02c4460b9e7f630df63fa7cd", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665337.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=001548e5e062470eb25d1e43ad0b4a3a&productIndex=1", productUuid: "001548e5e062470eb25d1e43ad0b4a3a", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665338.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=1e9a86d45ed14ca8a0172ded1821243c&productIndex=1", productUuid: "1e9a86d45ed14ca8a0172ded1821243c", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665339.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=2db844a3c6b942b192e165ac3adc8827&productIndex=1", productUuid: "2db844a3c6b942b192e165ac3adc8827", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665340.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=1332bf3bc9eb4abcb079d5faee8fac4a&productIndex=1", productUuid: "1332bf3bc9eb4abcb079d5faee8fac4a", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665341.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=6e8a008a6c1342f9bed6ed6e64b50390&productIndex=1", productUuid: "6e8a008a6c1342f9bed6ed6e64b50390", productIndex: "1" },
+				]
+			},
+			lyfyg: {
+				id: 'lyfyg',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586164.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667842.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=613f875f30f647dbbd168b90bc6e73b1&productIndex=1", productUuid: "613f875f30f647dbbd168b90bc6e73b1", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667843.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d6d78fc05f7549778bd2167adf87ace4&productIndex=1", productUuid: "d6d78fc05f7549778bd2167adf87ace4", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667844.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=ab04cc5aeecf4adc87ff1863208011d0&productIndex=1", productUuid: "ab04cc5aeecf4adc87ff1863208011d0", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/668/0000668238.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=94102b8ecfbc4116ab80ebd9e4e97acb&productIndex=1", productUuid: "94102b8ecfbc4116ab80ebd9e4e97acb", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667847.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=df3592175e724adea4c792cc16aa6ac6&productIndex=1", productUuid: "df3592175e724adea4c792cc16aa6ac6", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667846.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=f46b665d9e604c7192e967c2e63f1767&productIndex=1", productUuid: "f46b665d9e604c7192e967c2e63f1767", productIndex: "1" },
+				]
+			},
+			wj: {
+				id: 'wj',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586165.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665356.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=570fc3bc13a3483baef187f660f69294&productIndex=1", productUuid: "570fc3bc13a3483baef187f660f69294", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665357.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=f50264b85d504a0f9dd32ebb18e03a92&productIndex=1", productUuid: "f50264b85d504a0f9dd32ebb18e03a92", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665358.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=5dd3a088d8bf4fcf8ed20dd0270c861b&productIndex=1", productUuid: "5dd3a088d8bf4fcf8ed20dd0270c861b", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665359.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=83af540e59e148e8b0ffce3b00921a67&productIndex=1", productUuid: "83af540e59e148e8b0ffce3b00921a67", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665360.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=460b61ce18e1454b97557549f6c7253d&productIndex=1", productUuid: "460b61ce18e1454b97557549f6c7253d", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665361.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=9031823c63194389864ceaa753173664&productIndex=1", productUuid: "9031823c63194389864ceaa753173664", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665362.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=8bf9c88dc9784bb6b127c466831b52ee&productIndex=1", productUuid: "8bf9c88dc9784bb6b127c466831b52ee", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665363.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=027cbc0456ee4b3c8b6eb738f5277973&productIndex=1", productUuid: "027cbc0456ee4b3c8b6eb738f5277973", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665364.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=98a9e449dcf6461bb57b8cedaf2e1068&productIndex=1", productUuid: "98a9e449dcf6461bb57b8cedaf2e1068", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665365.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=76b0b8745f3d4ce29d74afe5d64f5d23&productIndex=1", productUuid: "76b0b8745f3d4ce29d74afe5d64f5d23", productIndex: "1" },
+				]
+			},
+			hjdq: {
+				id: 'hjdq',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586166.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665349.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=e2c861172596484499ef465fc9696882&productIndex=1", productUuid: "e2c861172596484499ef465fc9696882", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667839.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=f7d9b9982c394b3aaa3ce092db9c068b&productIndex=1", productUuid: "f7d9b9982c394b3aaa3ce092db9c068b", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665351.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=42f297ba81f9472ea8533e95cb8f7fe9&productIndex=1", productUuid: "42f297ba81f9472ea8533e95cb8f7fe9", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667840.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=4cb16e1e698144f781b4864f6ae669b9&productIndex=1", productUuid: "4cb16e1e698144f781b4864f6ae669b9", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665353.fid", class: ["pct30"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=51393855cd514594b40e521103daf40e&productIndex=1", productUuid: "51393855cd514594b40e521103daf40e", productIndex: "1" },
+				]
+			},
+			lyjjcdd: {
+				id: 'lyjjcdd',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586167.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665366.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=3312eb1ff44e402492423b93a01b315c&productIndex=1", productUuid: "3312eb1ff44e402492423b93a01b315c", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665367.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=d2495b2e4d9e4f18b136b40742a47cd7&productIndex=1", productUuid: "d2495b2e4d9e4f18b136b40742a47cd7", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/667/0000667841.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=0201e9d555274f229063e8c371a76748&productIndex=1", productUuid: "0201e9d555274f229063e8c371a76748", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/665/0000665369.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=531949ad2d594927a72f9420aefc9c4f&productIndex=1", productUuid: "531949ad2d594927a72f9420aefc9c4f", productIndex: "1" },
+				]
+			},
+			qwdz: {
+				id: 'qwdz',
+				bg: '',
+				title: 'http://img.jomoo.com.cn/dev1/0/000/586/0000586168.fid',
+				list: [
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666516.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=078294d3a47245819b6b77ae8b559e42&productIndex=1", productUuid: "078294d3a47245819b6b77ae8b559e42", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666517.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=cd9ec7af5bdd4f45ae66ee2db2716dd5&productIndex=1", productUuid: "cd9ec7af5bdd4f45ae66ee2db2716dd5", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666518.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=ab1352b722f1455b881a2d37cdff9645&productIndex=1", productUuid: "ab1352b722f1455b881a2d37cdff9645", productIndex: "1" },
+					{ src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666519.fid", class: ["pct46"], link: "http://m.ejomoo.com/h5/templet/detail/b2b-details.html?productUuid=ffb67d8e17e8467a8330060e86138ea9&productIndex=1", productUuid: "ffb67d8e17e8467a8330060e86138ea9", productIndex: "1" },
+				]
+			},
+			szsm: { src: "http://img.jomoo.com.cn/dev1/0/000/666/0000666645.fid", class: ["pct94"]},
+			btn: '<a class="scroll-top">回到顶部</a>'
+		},
+		components: {
+			'component-carousel': ComponentCarousel,
+			'component-nav': ComponentNav,
+			'component-section': ComponentSection,
+			'modal-live': ModalLive
+		},
+		methods: {
+			// 判断当前环境是小程序还是H5
+			isMiniJudge() {
+				let ua = navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == "micromessenger") {
+					//ios的ua中无miniProgram，但都有MicroMessenger（表示是微信浏览器）
+					wx.miniProgram.getEnv((res) => {
+						if (res.miniprogram) {
+							this.isMini = true;
+							this.loadWxJs();
+						} else {
+							this.loadjs();
+						}
+					})
+				} else {
+					this.loadjs();
+				}
+			},
+			loadjs() {
+				var script = document.createElement('script');
+				script.src = 'https://m.ejomoo.com/js/common/base.js';
+				script.type = 'text/javascript';
+				document.head.appendChild(script);
+				script.onload  = () => {
+					this.pageFlag = true;
+					//底部导航新增活动按钮
+					getNavicationConfig();
+				}
+			},
+			loadWxJs() {
+				var script = document.createElement('script');
+				script.src = 'https://m.ejomoo.com/js/common/xcxbase.js';
+				script.type = 'text/javascript';
+				document.head.appendChild(script);
+				script.onload = () => {
+					this.pageFlag = true;
+					//底部导航新增活动按钮
+					getNavicationConfig();
+				}
+			},
+			searchEvent() {
+				if (this.isMini) {
+					wx.miniProgram.navigateTo({ url: '/pages/shop/search' })
+				} else {
+					localStorage.setItem("searchBackUrl", "http://m.ejomoo.com/h5/templet/shop/index.html");
+					window.location.href = 'http://m.ejomoo.com/h5/templet/search/initSearch.html';
+				}
+			},
+			homeClickEvent() {
+				if (this.isMini) {
+					wx.miniProgram.switchTab({ url: '/pages/shop/index' })
+				} else {
+					window.location.href = 'http://m.ejomoo.com/';
+				}
+			},
+			classifyClickEvent() {
+				if (this.isMini) {
+					wx.miniProgram.switchTab({ url: '/pages/shop/classify' })
+				} else {
+					window.location.href = 'http://m.ejomoo.com/h5/templet/category/category.html';
+				}
+			},
+			shopcartClickEvent() {
+				if (this.isMini) {
+					wx.miniProgram.switchTab({ url: '/pages/cart/index' })
+				} else {
+					window.location.href = 'http://m.ejomoo.com/h5/templet/cart/cart.html';
+				}
+			},
+			meClickEvent() {
+				if (this.isMini) {
+					wx.miniProgram.switchTab({ url: '/pages/mine/index' })
+				} else {
+					window.location.href = 'http://m.ejomoo.com/h5/templet/personal/mine.html';
+				}
+			},
+			goDetial(url, productUuid, productIndex, activityUuid) {
+				if (this.isMini) {  // 如果当前处于小程序中，调用跳转到小程序页面方法
+					if (productIndex == 1) {//普通商品
+						wx.miniProgram.navigateTo({ url: '/pages/shop/details?productUuid=' + productUuid + '&productIndex=' + productIndex + '' })
+					} else if (productIndex == 10) {//优惠券商品
+						wx.miniProgram.navigateTo({ url: '/pages/shop/detailsCoupon?productUuid=' + productUuid + '&productIndex=' + productIndex + '' })
+					} else if (productIndex == 20) {//优惠券
+						wx.miniProgram.navigateTo({ url: '/pages/activity/getcoupon?logUuid=' + productUuid + '' })
+					} else if (productIndex == 2) {//秒杀
+						wx.miniProgram.navigateTo({ url: '/pages/shop/detailsSeckill?skuNo=' + productUuid + '&activityUuid=' + activityUuid + '' })
+					} else if (productIndex == 4) {//拼团
+						wx.miniProgram.navigateTo({ url: '/pages/pt/details?pt=' + activityUuid + '' })
+					} else {
+						window.location.href = url;
+					}
+				} else {
+					window.location.href = url;
+				}
+			},
+			// 领取优惠券
+			getConpon(type, uuid) {
+				let that = this;
+				var customerUuid = localStorage.getItem('userId');
+				if (customerUuid) {
+					if (type == '1') {//优惠券
+						var token = localStorage.getItem('token');
+						var sessionId = localStorage.getItem('sessionId');
+						var DES3Str = DES3.encrypt("123456789012345678901234", '{"opeType":"receiveCoupon","map":{"token":"' + token + '","sessionId":"' + sessionId + '","customerUuid":"' + customerUuid + '","couponTypeUuid":"' + uuid + '"}}');
+						var url = 'http://m.ejomoo.com/wap/api/app/appCall?' + 'jsonParam=' + DES3Str;
+						$.ajax({
+							type: 'POST',
+							url: url,
+							async: false,
+							dataType: 'json',
+							success: function(data) {
+								var returncode = data.return_code;
+								if (returncode != "0") {
+									if (data.message == "成功") {
+										mui.alert('领取' + data.message, '提示');
+									} else {
+										if (returncode != '49' && returncode != '50' && returncode != '51') {
+											mui.alert(data.message, '提示');
+										}
+									}
+								} else {
+									mui.alert('领取成功，使用时间：9月19日00:00 - 24:00', '提示');
+								}
+							}
+						})
+					}
+				} else {
+					mui.confirm('当前未登录，是否去登录?', '提示', function(e) {
+						if (e.index == '1') {
+							var url = window.location.href
+							localStorage.setItem('loginJump', url);
+							window.location.href = 'http://m.ejomoo.com/h5/templet/login/login1.html'
+						} else {
+							console.log("用户点击取消");
+						}
+					});
+				}
+			},
+		},
+		created(){
+			this.isMiniJudge();
+		},
+		mounted(){
+			var swiper=new Swiper('.swiper-container', {
+				direction : 'horizontal',
+				autoplay : 3000,
+				loop: false, // 循环模式选项
+			})
+			document.addEventListener("WeixinJSBridgeReady", function () {
+				document.getElementById('video').play();
+			}, false);
+			$('.scroll-top').on('click',function(){
+				$("html,body").animate({scrollTop:'0px'},800);
+			});
+			$('.live-room, .live-float').on('click', () => {
+				this.isvcodeLive = true;
+			});
+		}
+	})
+</script>
+<!--<script type="text/javascript" src="https://m.ejomoo.com/js/common/cartNum.js"></script>-->
+
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>登录</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-touch-fullscreen" content="YES">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- 页面引入的CSS -->
+		<link rel="stylesheet" href="../css/global.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../css/login.css" type="text/css" media="screen" />
+
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/init.js"></script>
+		<style>
+
+		</style>
+	</head>
+
+	<body style="background: url(../img/jogin-bg01.png) center no-repeat;background-size: 18.75rem 32.375rem;">
+		<header class="login-header">
+			<a class="mui_return" href="javascript:void(0);"></a>
+		</header>
+		<!-- /header -->
+		
+		<section class="login-logo" style="margin-top:100px;">
+			<img src="../img/jomoo-14.png" alt="">
+		</section>
+		
+		<form class="login-form" accept-charset="utf-8">
+
+			<div class="ordinary-login">
+				<div class="login-form-t">
+					<i></i>
+					<input id="username" type="text" name="username" placeholder="请输入用户名/手机号/邮箱">
+				</div>
+				<div class="login-form-t login-form-b current">
+					<i></i>
+					<input id="mobileCode" type="text" name="mobileCode" placeholder="请输入验证码">
+					<a id='hqyzm' href="javascript:void(0);">获取验证码</a>
+				</div>
+			</div>
+
+			<a id="loginbtn" class="btn btn-custom login-form-sbt" href="javascript:;">登录</a>
+		</form>
+	</body>
+
+</html>
+<!-- 页面引入的JS -->
+<script src="../js/model/login/md5/jquery.md5.js"></script>
+<script src="../js/model/login/sha1.js"></script>
+<script src="../js/des3.js"></script>
+<script src="../js/mui.min.js"></script>
+
+<script src="../js/base.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/model/login/login2.js?random=0.4"></script>
+
+<!-- 第三方登录插件 -->
+<script>
+	if(!isWeiXin()) {
+		$(".m_wx").hide();
+		$(".login-logo-bta ul").css("width", "50%");
+		$(".login-logo-bta li").css("width", "10%");
+	}
+
+	//	登录切换
+	$('.login-tab').find('span').click(function() {
+		$(this).addClass('active').siblings('span').removeClass('active');
+		var i = $(this).index('.login-tab span');
+		$('.login-form-b').eq(i).addClass('current').siblings('.login-form-b').removeClass('current');
+	});
+
+	$("#hqyzm").click(function() {
+		if(!$(this).hasClass("disabled")) {
+			captchaclick();
+		}
+	});
+
+	//验证码登录
+	//获取验证码
+	var cap = "";
+	var sessionId = "";
+
+	function captchaclick() {
+		var phone = $("#username").val();
+		var reg = /^1\d{10}$/;
+		//var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[15678]|18[0-9]|14[579])[0-9]{8}$/;
+		if(!reg.test(phone)) {
+			mui.alert('手机号码输入有误', '提示');
+		} else {
+			var reqisterImg = DES3.encrypt("123456789012345678901234", "{'opeType':'getCodeLogin','map':{'mobile':'" + phone + "'}}");
+			var getCodeUrl = window.basePath + 'jsonParam=' + reqisterImg;
+			$.ajax({
+				url: getCodeUrl,
+				type: "POST",
+				dataType: "json",
+				success: function(data) {
+					settime($("#hqyzm"));
+					sessionId = data.sessionId;
+					//storage.setItem("sessionId", data.sessionId, 7);
+				}
+			});
+		}
+	};
+
+	function wxAuth() {
+		var redirectUrl = encodeURI("http://m.ejomoo.com/h5/templet/login/wx.html");
+		window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e01e1488286aa5d&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+		//window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf51bfcfa23a1deee&redirect_uri=http://w.jomoo.com.cn/h5/templet/login/wx.html&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+	}
+</script>

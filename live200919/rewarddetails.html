@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 移动端手机号码/邮箱识别 -->
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!-- 微信调试 取消缓存 -->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<title>收益明细</title>
+	<meta name="description" content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+	<meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+	<link rel="stylesheet" type="text/css" href="./css/global.css" />
+  <link rel="stylesheet" type="text/css" href="./css/heard.css">
+    <link rel="stylesheet" type="text/css" href="./css/personal.css" />
+  <script src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+  <script src="js/template.js"></script>
+  <script src="https://m.ejomoo.com/js/main/init.js"></script>
+  <style>
+    /* [v-cloak]{display: none;} */
+  </style>
+</head>
+<body style="background: #fff;">
+  <!-- 公共头部start -->
+  <div class="top_header activity_heard">
+    <a class="top_icon fl go_back mui-action-back"></a>
+    <h3 class="top_title">收益明细</h3>
+  </div>
+  <!-- 公共头部end -->
+  <!-- <div class="contentbox" id="app" > -->
+ 
+      <!-- <ul class="jm-tab">
+          <li class="active">报名奖励</li>
+          <li>分享奖励</li>
+          <li>浏览奖励</li>
+      </ul> -->
+  <div class="jm-spacing"></div>
+  
+  <script type="text/html" id="infoDetailTmp">
+      {{if list && list.length > 0 }}
+      {{each list as m}}
+      <div class="jm-detail">
+        <div class="jm-head fl">
+            <img src="{{m.customerImgUrl}}" alt="">
+        </div>
+        <div class="jm-item-detail">
+            <div class="jm-name">
+                <h2>{{m.customerName}}</h2>
+                <span>{{m.createTime}}</span>
+            </div>
+            <p>+{{m.money}}元</p>
+        </div>
+      </div>
+        {{/each}}
+        {{/if}}
+        {{if !list || list.length <=0}}
+        <div class="no_blank">
+              <div class="m_img">
+                <img src="http://m.ejomoo.com/img/zwsj.png" alt="">
+              </div>
+              <p>暂无收益明细</p>
+        </div>
+        {{/if}}
+  </script>
+  <div class="jm-item"></div>
+</body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript">document.write('<script src="js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script>
+  var vue = new Vue({
+		el: "#app",
+    data: {
+      iselasticframe:false
+    },
+    methods:{
+      
+    }
+  })
+</script>
+<script type="text/javascript">
+//时间戳
+  var random = new Date().getTime()
+  var activityNo = getQueryString('activityNo') || ''//活动id
+  var userId = localStorage.getItem("userId");//用户的uuid
+  var token = localStorage.getItem("token");
+  var sessionId = localStorage.getItem("sessionId");	
+  var nowPage = 1;
+  var pageShow = 10;
+  var activityUuid = ""
+  var totalPage = 1;
+  
+  $(function() {
+    evaluationAjax(nowPage);
+  })
+   //全部评价和有图评价的点击事件
+   $(".jm-tab li").click(function () {
+        var state = new Array("", "1");
+        var num = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        $(".jm-item").hide().eq(num).show();
+        $(".jm-item").html("");
+        // evaluationAjax(state[num]);
+        evaluationAjax()
+    });
+    function evaluationAjax(nowPageStr){
+      var url = DES3.encrypt("123456789012345678901234", '{"opeType":"findMoneyByActivity","map":{"sessionId":"' + sessionId + '","customerUuid":"' + userId + '","token":"' + token + '","activityUuid":"' + activityNo + '","pageShow":"' + pageShow + '",,"nowPage":"' + nowPageStr + '"}}');
+      console.log(DES3.decrypt('123456789012345678901234',url))
+      url = window.basePath + 'jsonParam=' + url;
+      $.ajax({
+        url:url,
+        type:'POST',
+        dataType:'JSON',
+        success:function(data){
+          if(data.return_code != "0"){
+            mui.alert(data.message,'提示',function(){
+              if (data.return_code == '51') {
+                location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random;
+              }
+            });
+          }else{
+            evaluationHandle(data);
+          }
+        },  
+      })
+}
+  function evaluationHandle(data){
+    nowPage = data.data.nowPage
+    totalPage = data.data.totalPage;
+    var html = template('infoDetailTmp', data.data);
+    $(".jm-item").append(html);
+  }
+  
+  $(window).scroll(function() {
+    var scrollTop = $(this).scrollTop();
+    var scrollHeight = $(document).height();
+    var windowHeight = $(this).height();
+    if(scrollTop + windowHeight >= scrollHeight && nowPage < totalPage) {
+      nowPage = nowPage + 1;
+      // if ("有图评价" == $("span.on").html()) {
+			// 	evaluationAjax("1","");
+			// }else{
+			// 	evaluationAjax("","");
+			// }	
+      evaluationAjax(nowPage);
+    }
+  })
+  </script>

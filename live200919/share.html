@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 移动端手机号码/邮箱识别 -->
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!-- 微信调试 取消缓存 -->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<title>我的海报</title>
+	<meta name="description" content="九牧卫浴1990年创立。作为中国高端卫浴领导者，九牧长期专注于厨卫及配套产品的研发和生产，是一家以淋浴房、浴室柜、智能马桶、洁具、花洒、龙头、马桶、浴室柜、角阀、水槽、晾衣架、厨卫挂件为主体业务的大型厨卫企业，多次获得“中国卫浴十大品牌”“中国高端卫浴领导者”等称号" />
+	<meta name="keywords" content="九牧、九牧商城、九牧卫浴、九牧直播活动、九牧水龙头、九牧马桶、九牧花洒、九牧浴室柜、九牧角阀、九牧智能马桶">
+	<link rel="stylesheet" type="text/css" href="./css/global.css" />
+	<link rel="stylesheet" type="text/css" href="./css/heard.css">
+  <link rel="stylesheet" type="text/css" href="./css/extension.css" />
+	<script src="https://m.ejomoo.com/js/main/jquery-1.11.1.min.js"></script>
+	<script src="https://m.ejomoo.com/js/main/init.js"></script>
+	<style>
+		[v-cloak]{display: none;}
+	</style>
+</head>
+<body class="m_bg">
+<div class="top_header activity_heard">
+	<a class="top_icon fl go_back mui-action-back"></a>
+	<h3 class="top_title">我的海报</h3>
+</div>
+ <div style="display: none;" id="qrcode1"></div>
+ <div style="display: none;" id="qrcodebox"><img src=""></div>
+ <div style="display: none;" id="shareofficial"><img src="./img/live/share-shop.png"></div>
+ <!-- <div style="display: none;" id="shareofficial"><img src=""></div> -->
+ <div style="display: none;" id="jm-tx" crossOrigin="Anonymous"><img src=""></div>
+ <canvas id="canvas1" width="300" height="300"></canvas>
+<!--分享图片-->
+  <div class="jm-share">
+
+  </div><!--分享图片 end-->
+  <!-- <div class="jm-share-btn">
+	 长按图片保存
+  </div> -->
+  <!--底部导航-->
+<nav class="nav">
+	<div class="footer_nav">
+		<ol>
+			<li class="nav_li1 " id="home">
+				<a href="javascript:;">
+					<s></s>
+					<p>首页</p >
+				</a>
+			</li>
+			<li class="nav_li2 active" id="classify">
+				<a href="javascript:;">
+					<s></s>
+					<p>我的海报</p >
+				</a>
+			</li>
+			<li class="nav_li3" id="me">
+				<a href="#">
+					<s></s>
+					<p>个人中心</p >
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav>
+<!--底部导航 end-->
+  <div class="ver-loading">
+	  <img src="http://img.jomoo.com.cn/dev1/0/000/499/0000499568.fid" alt="">
+  </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/main/des3.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/mui.js"></script>
+<script type="text/javascript" src="https://m.ejomoo.com/js/jquery.cookie.js"></script>
+<script type="text/javascript">document.write('<script src="js/base.js?timestamp='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script>
+<script src="./js/qrcode.js"></script>
+<!-- <script src="./js/hidpi-canvas.min.js"></script> -->
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0f4fc617a382687d7d4f7c2363bbfa52&plugin=AMap.Geocoder"></script>
+<script>
+	//时间戳
+	var random = new Date().getTime()
+	var activityNo = getQueryString('activityNo') || ''//活动id
+	// 
+	setTimeout(() => {
+		var that = this
+		//点击底部导航-首页按钮页面跳转，在原基础上添加小程序跳转判断
+		$('#home').click(function(){
+		   window.location.href='./livepresale.html?activityNo='+ activityNo + '&v='+ random
+		})
+		//点击底部导航-分类按钮页面跳转，在原基础上添加小程序跳转判断
+		$('#classify').click(function(){
+			var customerUuid = localStorage.getItem("userId");//用户的uuid
+			var token = localStorage.getItem("token");
+			var sessionId = localStorage.getItem("sessionId");	
+			if (!isEmpty(customerUuid) && !isEmpty(token) && !isEmpty(sessionId)) {
+			  window.location.href='./share.html?activityNo='+ activityNo + '&v='+ random
+			}else{
+			  window.location.href='./extension.html?activityNo='+ activityNo + '&v='+ random
+			}
+			
+		})
+		
+		//点击底部导航-我的按钮页面跳转，在原基础上添加小程序跳转判断
+		$('#me').click(function(){
+			window.location.href='./personalcenter.html?activityNo='+ activityNo + '&v='+ random
+		})
+		
+	})
+	var username = ''; //用户名
+	var heardimage = '';//头像
+	var vue = new Vue({
+	  el: "#app",
+	  data: {
+	  },
+	  mounted() {
+		this.init();
+	  },
+	  methods:{
+		init(){
+		  var userId = localStorage.getItem('customerUuid')
+		  var token = localStorage.getItem('token')
+		  var sessionId = localStorage.getItem('sessionId')
+		  if (!isEmpty(userId) && !isEmpty(token) && !isEmpty(sessionId)) {
+			var url = DES3.encrypt("123456789012345678901234", '{"opeType":"getCustomerInfo","map":{"sessionId":"' + sessionId + '","customerUuid":"' + userId + '","token":"'+token+'"}}');
+			console.log(DES3.decrypt('123456789012345678901234',url))
+			url = window.basePath + 'jsonParam=' + url;
+			var that = this;
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "json",
+				async: false,
+				success: function(data) {
+				console.log(data);
+				var returncode = data.return_code;
+				if(returncode == '0') {
+					username = data.customerInfo.customerName
+					if(data.customerInfo.image){
+						var addPic = data.customerInfo.image.replace('http://img.jomoo.com.cn/', 'http://m.ejomoo.com/');
+						heardimage = addPic
+					}else{
+						heardimage = './img/g2_dmine.png'
+					}
+				}else{
+					if(returncode == '49'|| returncode=='50'|| returncode =='51'){
+					  var comeAddress = window.location.href;
+					  window.location.href='./extension.html?activityNo='+ activityNo + '&v='+ random
+					}else{
+					  mui.alert(data.message, '提示');
+					} 
+				}
+				},
+				error: function(data) {
+				mui.alert('系统错误', '提示');
+				}
+			})
+		  }else{
+			var comeAddress = window.location.href;
+			localStorage.setItem("loginJump", comeAddress);
+			window.location.href = './login/login1.html?activityNo='+activityNo + '&v=' +random; 
+		  }
+		},
+	  }
+	})
+  </script>
+  
+  <script type="text/javascript">
+    window.onload = function () {
+		var num = 0;
+		var mainCustomerUuid = localStorage.getItem("userId"); //用户的uuid
+		var activitiesUuid = getQueryString("activityNo") || '';
+		var shareUrl = "http://fission.ejomoo.com/small/live/lb?no="+activitiesUuid + '&c='+ mainCustomerUuid;
+		console.log(shareUrl);
+		var qrq = new QRCode(document.getElementById("qrcode1"), {
+			width: 155,
+			height: 155,
+			colorDark: "#000000",
+			colorLight: "#ffffff",
+			correctLevel: QRCode.CorrectLevel.L
+		});
+		qrq.makeCode(shareUrl);
+	}
+			// var windW = $(window).width();
+			var windW = 1008;
+			var oCanvas = document.getElementById("canvas1");
+		    var ratio = getPixelRatio(oCanvas);  // 放大画布
+			var rates = windW / 750 * ratio;
+			windW = windW * ratio
+			console.log(windW)
+			// var windH = $(window).height();
+			var windH = 1900;
+			windH = Math.min(windH,1280 * rates) - 100 * rates;
+			windH = windH * ratio
+			console.log(windH)
+	  function getQRUrl (url) {
+		   console.log(url)
+		   $("#qrcodebox img").attr("src",url);
+			var img = $('#qrcodebox img')[0];
+			img.onload =function() {
+				var img1 = $('#shareofficial img')[0];
+				oCanvas.width=windW;
+				oCanvas.height= windH;
+				var ctx = oCanvas.getContext("2d");
+				// ctx.scale(ratio,ratio); 
+				ctx.clearRect(0,0,windW,windH);
+				// 绘制背景
+				ctx.rect(0,0,windW,windH);
+				ctx.fillStyle="#fff";
+				ctx.fill();
+				//y方向的偏移量，因为是从上往下绘制的，所以y一直向下偏移，不断增大。
+				var yOffset = 0;
+				// 绘制广告
+				ctx.drawImage(img1,0,0,windW,windH - 60 * rates);
+				ctx.save()
+				// 绘制二维码
+				ctx.fillStyle = "#fff";
+				ctx.fillRect( 5 * rates, windH - 220 * rates, 155 * rates, 155 * rates);
+				ctx.drawImage(img, 10 * rates, windH - 215 * rates, 145 * rates, 145 * rates);
+				// // 绘制文字 ’长按识别二维码
+				// ctx.font=34 * ratio + "px microsoft yahei";
+				// ctx.fillStyle = "#fff";
+				// ctx.textAlign = "left";
+				// ctx.fillText("长按识别二维码 ", 190 * rates, windH - 142 * rates);
+				// // 绘制文字 ’报名享工厂价
+				// ctx.font=34 * ratio + "px microsoft yahei";
+				// ctx.fillStyle = "#fff";
+				// ctx.textAlign = "left";
+				// ctx.fillText("报名享工厂价", 190 * rates, windH - 115 * rates);
+
+				var name = username+' 邀请您参加活动'
+				ctx.font=34 * ratio + "px microsoft yahei";
+				ctx.fillStyle = "#000";
+				ctx.textAlign = "center";
+				ctx.fillText(name, windW / 2, windH - 25 * rates);
+				var image = oCanvas.toDataURL("image/png");
+				downLoad(image);
+				$('#canvas1').hide();
+            }
+		
+		}
+		
+		function cacheImg(url , callback,index){
+			// 网络图片会跨越
+			var img = document.createElement("img");
+			img.setAttribute('crossOrigin', 'Anonymous');
+			img.src = url;
+			img.className = 'hidepic';
+			document.body.appendChild(img);
+			setTimeout(function () {
+				callback.call(img,index)
+			},1000)
+		}
+
+		
+		function downLoad(url){
+			var html = '<div class="swiper-slide" ><img src="'+url+'"></div>'
+			$('.jm-share').append(html);
+			$('.ver-loading').hide()
+		}
+		
+		function getPixelRatio(context) {
+		    var backingStore = context.backingStorePixelRatio ||
+		        context.webkitBackingStorePixelRatio ||
+		        context.mozBackingStorePixelRatio ||
+		        context.msBackingStorePixelRatio ||
+		        context.oBackingStorePixelRatio ||
+		        context.backingStorePixelRatio || 1;
+		    return (window.devicePixelRatio || 1) / backingStore;
+		};
+	
+  </script>
+</html>
+
+
